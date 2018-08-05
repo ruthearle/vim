@@ -76,3 +76,9 @@
 [submodule "pack/my-plugins/start/YouCompleteMe"]
 	path = pack/my-plugins/start/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
+[submodule "pack/my-plugins/start/vim-markdown"]
+	path = pack/my-plugins/start/vim-markdown
+	url = git@github.com:plasticboy/vim-markdown.git
+[submodule "pack/my-plugins/start/vim-javascript"]
+	path = pack/my-plugins/start/vim-javascript
+	url = git@github.com:pangloss/vim-javascript.git
