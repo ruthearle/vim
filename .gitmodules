@@ -1,0 +1,78 @@
+[submodule "pack/my-plugins/start/ale"]
+	path = pack/my-plugins/start/ale
+	url = git@github.com:w0rp/ale.git
+[submodule "pack/my-plugins/start/neomake"]
+	path = pack/my-plugins/start/neomake
+	url = git@github.com:neomake/neomake.git
+[submodule "pack/my-plugins/start/guttentags"]
+	path = pack/my-plugins/start/guttentags
+	url = git@github.com:ludovicchabant/vim-gutentags.git
+[submodule "pack/my-plugins/start/vim-gutentags"]
+	path = pack/my-plugins/start/vim-gutentags
+	url = git@github.com:ludovicchabant/vim-gutentags.git
+[submodule "pack/my-plugins/start/vim-airline-themes"]
+	path = pack/my-plugins/start/vim-airline-themes
+	url = git@github.com:vim-airline/vim-airline-themes.git
+[submodule "pack/my-plugins/start/vim-airline"]
+	path = pack/my-plugins/start/vim-airline
+	url = git@github.com:vim-airline/vim-airline.git
+[submodule "pack/my-plugins/start/ctrlp.vim"]
+	path = pack/my-plugins/start/ctrlp.vim
+	url = git@github.com:ctrlpvim/ctrlp.vim.git
+[submodule "pack/my-plugins/start/ag.vim"]
+	path = pack/my-plugins/start/ag.vim
+	url = git@github.com:brookhong/ag.vim.git
+[submodule "pack/my-plugins/start/editorconfig-vim"]
+	path = pack/my-plugins/start/editorconfig-vim
+	url = git@github.com:editorconfig/editorconfig-vim.git
+[submodule "pack/my-plugins/start/ultisnips"]
+	path = pack/my-plugins/start/ultisnips
+	url = git@github.com:SirVer/ultisnips.git
+[submodule "pack/my-plugins/start/vimagit"]
+	path = pack/my-plugins/start/vimagit
+	url = git@github.com:jreybert/vimagit.git
+[submodule "pack/my-plugins/start/GoldenView.Vim"]
+	path = pack/my-plugins/start/GoldenView.Vim
+	url = git@github.com:zhaocai/GoldenView.Vim.git
+[submodule "pack/my-plugins/start/vim-snippets"]
+	path = pack/my-plugins/start/vim-snippets
+	url = git@github.com:honza/vim-snippets.git
+[submodule "pack/my-plugins/start/vim-bbye"]
+	path = pack/my-plugins/start/vim-bbye
+	url = git@github.com:moll/vim-bbye.git
+[submodule "pack/my-plugins/start/vim-code-dark"]
+	path = pack/my-plugins/start/vim-code-dark
+	url = git@github.com:tomasiser/vim-code-dark.git
+[submodule "pack/my-plugins/start/vim-polyglot"]
+	path = pack/my-plugins/start/vim-polyglot
+	url = git@github.com:sheerun/vim-polyglot.git
+[submodule "pack/my-plugins/start/vim-dispatch"]
+	path = pack/my-plugins/start/vim-dispatch
+	url = git@github.com:tpope/vim-dispatch.git
+[submodule "pack/my-plugins/start/vimfiler.vim"]
+	path = pack/my-plugins/start/vimfiler.vim
+	url = git@github.com:Shougo/vimfiler.vim.git
+[submodule "pack/my-plugins/start/unite.vim"]
+	path = pack/my-plugins/start/unite.vim
+	url = git@github.com:Shougo/unite.vim.git
+[submodule "pack/my-plugins/start/vim-livedown"]
+	path = pack/my-plugins/start/vim-livedown
+	url = git@github.com:shime/vim-livedown.git
+[submodule "pack/my-plugins/start/vim-move"]
+	path = pack/my-plugins/start/vim-move
+	url = git@github.com:matze/vim-move.git
+[submodule "pack/my-plugins/start/vim-multiple-cursors"]
+	path = pack/my-plugins/start/vim-multiple-cursors
+	url = git@github.com:terryma/vim-multiple-cursors.git
+[submodule "pack/my-plugins/start/vim-ref"]
+	path = pack/my-plugins/start/vim-ref
+	url = git@github.com:thinca/vim-ref.git
+[submodule "pack/my-plugins/start/vim-surround"]
+	path = pack/my-plugins/start/vim-surround
+	url = git@github.com:tpope/vim-surround.git
+[submodule "pack/my-plugins/start/webapi-vim"]
+	path = pack/my-plugins/start/webapi-vim
+	url = git@github.com:mattn/webapi-vim.git
+[submodule "pack/my-plugins/start/YouCompleteMe"]
+	path = pack/my-plugins/start/YouCompleteMe
+	url = git@github.com:Valloric/YouCompleteMe.git
