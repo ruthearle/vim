@@ -82,3 +82,9 @@
 [submodule "pack/my-plugins/start/vim-javascript"]
 	path = pack/my-plugins/start/vim-javascript
 	url = git@github.com:pangloss/vim-javascript.git
+[submodule "pack/my-plugins/start/vim-git"]
+	path = pack/my-plugins/start/vim-git
+	url = git@github.com:tpope/vim-git.git
+[submodule "pack/my-plugins/start/vim-wakatime"]
+	path = pack/my-plugins/start/vim-wakatime
+	url = git@github.com:wakatime/vim-wakatime.git

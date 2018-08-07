@@ -16,7 +16,7 @@ nnoremap <leader>vrc :split ~/.vimrc<cr>
 nnoremap <leader>so :so %<cr>
 
 " ----------- General stuff ---------
-syntax on
+syntax enable
 colorscheme codedark
 set syntax=whitespace
 set list
