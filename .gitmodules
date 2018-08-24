@@ -28,9 +28,6 @@
 [submodule "pack/my-plugins/start/ultisnips"]
 	path = pack/my-plugins/start/ultisnips
 	url = git@github.com:SirVer/ultisnips.git
-[submodule "pack/my-plugins/start/vimagit"]
-	path = pack/my-plugins/start/vimagit
-	url = git@github.com:jreybert/vimagit.git
 [submodule "pack/my-plugins/start/GoldenView.Vim"]
 	path = pack/my-plugins/start/GoldenView.Vim
 	url = git@github.com:zhaocai/GoldenView.Vim.git
@@ -88,3 +85,15 @@
 [submodule "pack/my-plugins/start/vim-wakatime"]
 	path = pack/my-plugins/start/vim-wakatime
 	url = git@github.com:wakatime/vim-wakatime.git
+[submodule "pack/my-plugins/start/vim-fugitive"]
+	path = pack/my-plugins/start/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule "pack/my-plugins/start/vim-jsx"]
+	path = pack/my-plugins/start/vim-jsx
+	url = git@github.com:mxw/vim-jsx.git
+[submodule "pack/my-plugins/start/vim-startify"]
+	path = pack/my-plugins/start/vim-startify
+	url = git@github.com:mhinz/vim-startify.git
+[submodule "pack/my-plugins/start/vim-js-indent"]
+	path = pack/my-plugins/start/vim-js-indent
+	url = git@github.com:gavocanov/vim-js-indent.git

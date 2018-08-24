@@ -28,7 +28,7 @@ set number
 "set undofile
 set showtabline=-2
 set shortmess+=a
-set cmdheight=2 " helps to show full execusion of commands
+"set cmdheight=3 " helps to show full execusion of commands
 set ts=2 " tab stop width.
 set path=.,,** " set the path for vim to search for files
 set nofoldenable      "dont fold by default"
@@ -40,7 +40,6 @@ set modifiable " Enable buffers to be edited
 set shiftwidth=2
 set expandtab
 set smarttab
-set smartindent
 set expandtab
 set autowrite
 set lazyredraw
@@ -260,3 +259,15 @@ let g:livedown_open = 1
 "------------------https://github.com/pangloss/vim-javascript-------------
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_conceal_undefined            = "¿"
+let g:jsx_ext_required = 1
+
+"-------------ALE-------------
+"let g:ale_lint_on_insert_leave = 1
+let g:ale_fix_on_save = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_fixers = {
+\   'javascript': ['prettier', 'eslint'],
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
