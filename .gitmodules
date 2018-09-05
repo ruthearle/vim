@@ -97,3 +97,6 @@
 [submodule "pack/my-plugins/start/vim-js-indent"]
 	path = pack/my-plugins/start/vim-js-indent
 	url = git@github.com:gavocanov/vim-js-indent.git
+[submodule "pack/my-plugins/start/tmuxline.vim"]
+	path = pack/my-plugins/start/tmuxline.vim
+	url = git@github.com:edkolev/tmuxline.vim.git

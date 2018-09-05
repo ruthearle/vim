@@ -15,7 +15,7 @@ let mapleader = ","
 nnoremap <leader>vrc :split ~/.vimrc<cr>
 nnoremap <leader>so :so %<cr>
 
-" ----------- General stuff ---------
+" ----------- VIM General config ---------
 syntax enable
 colorscheme codedark
 set syntax=whitespace
@@ -28,15 +28,15 @@ set number
 "set undofile
 set showtabline=-2
 set shortmess+=a
-"set cmdheight=3 " helps to show full execusion of commands
-set ts=2 " tab stop width.
-set path=.,,** " set the path for vim to search for files
-set nofoldenable      "dont fold by default"
-set foldmethod=syntax  "Lets you hide sections
-set laststatus=2 " Always show statusbar
-set noswapfile
-set startofline " When doing thing like gg or G, will move cursor to start of line
-set modifiable " Enable buffers to be edited
+"set cmdheight=3          " Helps to show full execusion of commands
+set ts=2                  " Tab stop width
+set path=.,,**            " Set the path for vim to search for files
+set nofoldenable          " Dont fold by default"
+set foldmethod=syntax     " Lets you hide sections
+set laststatus=2          " Always show statusbar
+set noswapfile            " Self explanatory. No bloody swapfile already!
+set startofline           " When doing things like gg or G, will move cursor to start of line
+set modifiable            " Enable buffers to be edited
 set shiftwidth=2
 set expandtab
 set smarttab
@@ -44,6 +44,9 @@ set expandtab
 set autowrite
 set lazyredraw
 set hidden
+set hlsearch              " Highlight search items
+set incsearch             " Jump to the next search item as you type
+hi Search cterm=italic ctermfg=black ctermbg=DarkMagenta
 
 "-------Bind EJS files to HTML-------
 au BufNewFile,BufRead *.ejs set filetype=html
@@ -58,6 +61,9 @@ autocmd! BufWritePost * Neomake
 " % = name of current file, %:p = gives the full path, %:p:h = gives its
 " directory ("head" of full path)
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+
+"------ Reload screen -----------
+nnoremap <leader>r :redraw!<CR>
 
 "------ Disable arrow keys ------
 nnoremap <up> <nop>
@@ -75,21 +81,32 @@ nnoremap k gk
 nnoremap ; :
 
 "-------Navigate tabs---------
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+"nnoremap <C-Left> :tabprevious<CR>
+"nnoremap <C-Right> :tabnext<CR>
 " tab navigation mappings from https://github.com/fisadev/fisa-vim-config/blob/master/.vimrc
-map tn :tabn<CR>
-map tp :tabp<CR>
-map tm :tabm
-map tt :tabnew
-map ts :tab split<CR>
-map <C-S-Right> :tabn<CR>
-imap <C-S-Right> <ESC>:tabn<CR>
-map <C-S-Left> :tabp<CR>
-imap <C-S-Left> <ESC>:tabp<CR>
+"map tn :tabn<CR>
+"map tp :tabp<CR>
+"map tt :tabnew<CR>
+"map <C-S-Right> :tabn<CR>
+"imap <C-S-Right> <ESC>:tabn<CR>
+"map <C-S-Left> :tabp<CR>
+"imap <C-S-Left> <ESC>:tabp<CR>
+
+"-------Navigate buffers---------
+map b[ :bnext<CR>
+map b] :bprevious<CR>
+
+"----------CopyPasta in Tmux-----------
+"----------Not working-----------------
+" copy a whole line to the clipboard
+"noremap ty "+y
+"noremap tY "+Y
+" put the text from clipboard AFTER the cursor
+"noremap tp "+p
+" put the text from clipboard BEFORE the cursor
+"noremap tP "+P
 
 "--------- Buffer -------------
-nnoremap <leader>bw :bw<cr>
 
 "------ Save on losing focus -----Not sure about this one--Using this now
 " because I am tmux'ing
@@ -115,7 +132,7 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
-"------------- New lines --------
+"------------- New lines without entering into insert mode --------
 nnoremap ou O<ESC>
 nnoremap od o<ESC>
 
@@ -127,12 +144,13 @@ let g:gutentags_cache_dir = '~/.allTags'
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols='unicode'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod=':p:~:.'
+let g:airline#extensions#tabline#fnamemod=':t'
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#fnamecollapse = 1
 let g:airline#extensions#tabline#fnametruncate = 0
+let g:airline#extensions#hunks#non_zero_only = 1
 
 " Show PASTE if in paste mode
 let g:airline_detect_paste = 1
@@ -166,7 +184,7 @@ nnoremap <leader>fx :%s/\s\+$//<cr>:let @/=''<CR>
 " --- type ° to search the word in all files in the current dir
 nmap ª :Ag <C-r>=expand("<cword>")<cr><cr>
 nnoremap <leader>k :exe 'Ag!' expand('<cword>')<cr>
-nnoremap <space>/ :Ag!  
+nnoremap <space>/ :Ag! <space>
 
 " -------- Fugitive -------------------
 nnoremap <leader>gb :Gblame<CR>
@@ -180,7 +198,7 @@ nnoremap <leader>gpl :Gpull<CR>
 " ------------- Golden View ------------
 let g:goldenview__enable_default_mapping = 0
 "nmap <silent> <C-u> <Plug>GoldenViewResize
-nmap <silent> <C-l> <Plug>GoldenViewSplit
+nmap <silent> <C-gl> <Plug>GoldenViewSplit
 "nmap <silent> <C-x> <Plug>GoldenViewNext
 "nmap <silent> <C-P> <Plug>GoldenViewPrevious
 nmap <silent> <S-F12> <Plug>GoldenViewSwitchMain
@@ -264,6 +282,8 @@ let g:jsx_ext_required = 1
 "-------------ALE-------------
 "let g:ale_lint_on_insert_leave = 1
 let g:ale_fix_on_save = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
@@ -271,3 +291,20 @@ let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
+let g:ale_set_highlights=1
+highlight ALEError ctermfg=black ctermbg=DarkRed
+highlight ALEWarn ctermfg=black ctermbg=DarkYellow
+highlight ALEErrorSign ctermfg=black ctermbg=DarkRed
+highlight ALEWarningSign ctermfg=black ctermbg=DarkYellow
+
+
+"------------https://github.com/edkolev/tmuxline.vim----------
+let g:airline#extensions#tmuxline#enabled = 1
+let g:tmuxline_powerline_separators = 1
+let airline#extensions#tmuxline#snapshot_file = "~/.tmuxline.conf"
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : ['#I #W'],
+      \'cwin' : ['#I #W #F'],
+      \'y'    : ['%R %a %Y'],
+      \'z'    : '#H'}
