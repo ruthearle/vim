@@ -54,9 +54,6 @@ au BufNewFile,BufRead *.hbs set filetype=html
 au BufNewFile,BufRead *.eex set filetype=html
 "au BufNewFile,BufRead *.erb set filetype=html
 
-"---------Neomake----------------
-autocmd! BufWritePost * Neomake
-
 "--------Change to current directory of file
 " % = name of current file, %:p = gives the full path, %:p:h = gives its
 " directory ("head" of full path)
@@ -282,8 +279,9 @@ let g:jsx_ext_required = 1
 "-------------ALE-------------
 "let g:ale_lint_on_insert_leave = 1
 let g:ale_fix_on_save = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚠'
+let g:ale_sign_info = 'ℹ'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
