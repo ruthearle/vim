@@ -1,9 +1,6 @@
 [submodule "pack/my-plugins/start/ale"]
 	path = pack/my-plugins/start/ale
 	url = git@github.com:w0rp/ale.git
-[submodule "pack/my-plugins/start/neomake"]
-	path = pack/my-plugins/start/neomake
-	url = git@github.com:neomake/neomake.git
 [submodule "pack/my-plugins/start/guttentags"]
 	path = pack/my-plugins/start/guttentags
 	url = git@github.com:ludovicchabant/vim-gutentags.git
