@@ -70,9 +70,6 @@
 [submodule "pack/my-plugins/start/YouCompleteMe"]
 	path = pack/my-plugins/start/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
-[submodule "pack/my-plugins/start/vim-markdown"]
-	path = pack/my-plugins/start/vim-markdown
-	url = git@github.com:plasticboy/vim-markdown.git
 [submodule "pack/my-plugins/start/vim-javascript"]
 	path = pack/my-plugins/start/vim-javascript
 	url = git@github.com:pangloss/vim-javascript.git
@@ -97,3 +94,6 @@
 [submodule "pack/my-plugins/start/tmuxline.vim"]
 	path = pack/my-plugins/start/tmuxline.vim
 	url = git@github.com:edkolev/tmuxline.vim.git
+[submodule "pack/my-plugins/start/vim-yaml"]
+	path = pack/my-plugins/start/vim-yaml
+	url = git@github.com:stephpy/vim-yaml.git
