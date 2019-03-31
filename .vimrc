@@ -31,8 +31,8 @@ set shortmess+=a
 "set cmdheight=3          " Helps to show full execusion of commands
 set ts=2                  " Tab stop width
 set path=.,,**            " Set the path for vim to search for files
-set nofoldenable          " Dont fold by default"
-set foldmethod=syntax     " Lets you hide sections
+"set nofoldenable          " Dont fold by default"
+set foldmethod=indent     " Lets you hide sections
 set laststatus=2          " Always show statusbar
 set noswapfile            " Self explanatory. No bloody swapfile already!
 set startofline           " When doing things like gg or G, will move cursor to start of line
@@ -43,6 +43,8 @@ set smarttab
 set expandtab
 set autowrite
 set lazyredraw
+set nolist
+set listchars=eol:¬
 set hidden
 set hlsearch              " Highlight search items
 set incsearch             " Jump to the next search item as you type
