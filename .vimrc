@@ -4,7 +4,14 @@
 "                        \ V /| | | | | | | | | (__
 "                       (_)_/ |_|_| |_| |_|_|  \___|
 "
+"---------- Powerline -------------
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 scriptencoding utf-8
+set rtp+=/usr/lib/python3.7/dist-packages/powerline/bindings/vim
+set laststatus=2
+let g:powerline_pycmd="py3"
 
 filetype plugin indent on
 set runtimepath^=~/.vim/pack/my-plugins/start/ctrlp.vim
