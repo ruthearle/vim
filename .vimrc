@@ -24,7 +24,6 @@ nnoremap <leader>so :so %<cr>
 
 " ----------- VIM General config ---------
 syntax enable
-colorscheme codedark
 set syntax=whitespace
 set list
 set clipboard=unnamedplus " use system clipboard
@@ -40,7 +39,7 @@ set ts=2                  " Tab stop width
 set path=.,,**            " Set the path for vim to search for files
 "set nofoldenable          " Dont fold by default"
 set foldmethod=indent     " Lets you hide sections
-set laststatus=2          " Always show statusbar
+set laststatus=2          " Always show statusbar - Need for powerline to show
 set noswapfile            " Self explanatory. No bloody swapfile already!
 set startofline           " When doing things like gg or G, will move cursor to start of line
 set modifiable            " Enable buffers to be edited
@@ -55,11 +54,18 @@ set listchars=eol:¬
 set hidden
 set hlsearch              " Highlight search items
 set incsearch             " Jump to the next search item as you type
+set nomodeline            " Ensure the vulnerability is covered
+set modelines=0           " Just to be sure :o)
 hi Search cterm=italic ctermfg=black ctermbg=DarkMagenta
+
+"-------- Set colourscheme -----------
+colorscheme codedark
+"hi Normal guibg=NONE ctermbg=NONE
+hi NonText ctermbg=NONE
 
 "-------Bind EJS files to HTML-------
 au BufNewFile,BufRead *.ejs set filetype=html
-au BufNewFile,BufRead *.hbs set filetype=html
+au BufNewFile,BufRead *.hbs set filetype=xml
 au BufNewFile,BufRead *.eex set filetype=html
 "au BufNewFile,BufRead *.erb set filetype=html
 
@@ -87,20 +93,21 @@ nnoremap k gk
 nnoremap ; :
 
 "-------Navigate tabs---------
-"nnoremap <C-Left> :tabprevious<CR>
-"nnoremap <C-Right> :tabnext<CR>
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
 " tab navigation mappings from https://github.com/fisadev/fisa-vim-config/blob/master/.vimrc
-"map tn :tabn<CR>
-"map tp :tabp<CR>
-"map tt :tabnew<CR>
-"map <C-S-Right> :tabn<CR>
-"imap <C-S-Right> <ESC>:tabn<CR>
-"map <C-S-Left> :tabp<CR>
-"imap <C-S-Left> <ESC>:tabp<CR>
+map tn :tabn<CR>
+map tp :tabp<CR>
+map tt :tabnew<CR>
+map <C-S-Right> :tabn<CR>
+imap <C-S-Right> <ESC>:tabn<CR>
+map <C-S-Left> :tabp<CR>
+imap <C-S-Left> <ESC>:tabp<CR>
 
 "-------Navigate buffers---------
-map b[ :bnext<CR>
-map b] :bprevious<CR>
+map [b :bnext<CR>
+map ]b :bprevious<CR>
+
 
 "----------CopyPasta in Tmux-----------
 "----------Not working-----------------
@@ -147,41 +154,41 @@ set statusline+=%{gutentags#statusline()} "show when its working
 let g:gutentags_cache_dir = '~/.allTags'
 
 "--------bling/vim-airline settings---------
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols='unicode'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod=':t'
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#fnamecollapse = 1
-let g:airline#extensions#tabline#fnametruncate = 0
-let g:airline#extensions#hunks#non_zero_only = 1
+"let g:airline_powerline_fonts = 1
+"let g:Powerline_symbols='unicode'
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#fnamemod=':t'
+"let g:airline#extensions#tabline#show_buffers = 1
+"let g:airline#extensions#tabline#buffer_nr_show = 1
+"let g:airline#extensions#tabline#show_tabs = 1
+"let g:airline#extensions#tabline#fnamecollapse = 1
+"let g:airline#extensions#tabline#fnametruncate = 0
+"let g:airline#extensions#hunks#non_zero_only = 1
 
 " Show PASTE if in paste mode
-let g:airline_detect_paste = 1
+"let g:airline_detect_paste = 1
 
-let g:airline_inactive_collapse=1
-let g:airline#extensions#bufferline#enabled = 0
+"let g:airline_inactive_collapse=1
+"let g:airline#extensions#bufferline#enabled = 0
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+"if !exists('g:airline_symbols')
+  "let g:airline_symbols = {}
+"endif
 
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_theme = 'codedark'
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'
+"let g:airline_theme = 'codedark'
 "let g:airline_theme = 'minimalist'
 
 " Strips whitespace
@@ -203,8 +210,9 @@ nnoremap <leader>gpl :Gpull<CR>
 
 " ------------- Golden View ------------
 let g:goldenview__enable_default_mapping = 0
+let g:goldenview__enable_at_startup = 0
 "nmap <silent> <C-u> <Plug>GoldenViewResize
-nmap <silent> <C-gl> <Plug>GoldenViewSplit
+nmap <silent> <C-g> <Plug>GoldenViewSplit
 "nmap <silent> <C-x> <Plug>GoldenViewNext
 "nmap <silent> <C-P> <Plug>GoldenViewPrevious
 nmap <silent> <S-F12> <Plug>GoldenViewSwitchMain
@@ -304,14 +312,23 @@ highlight ALEWarn ctermfg=black ctermbg=DarkYellow
 highlight ALEErrorSign ctermfg=black ctermbg=DarkRed
 highlight ALEWarningSign ctermfg=black ctermbg=DarkYellow
 
+"-------------- vim test -----------------
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+" make test commands execute using dispatch.vim
+let test#strategy = "vimux"
 
 "------------https://github.com/edkolev/tmuxline.vim----------
-let g:airline#extensions#tmuxline#enabled = 1
-let g:tmuxline_powerline_separators = 1
-let airline#extensions#tmuxline#snapshot_file = "~/.tmuxline.conf"
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'win'  : ['#I #W'],
-      \'cwin' : ['#I #W #F'],
-      \'y'    : ['%R %a %Y'],
-      \'z'    : '#H'}
+"let g:airline#extensions#tmuxline#enabled = 1
+"let g:tmuxline_powerline_separators = 1
+"let airline#extensions#tmuxline#snapshot_file = "~/.tmuxline.conf"
+"let g:tmuxline_preset = {
+      "\'a'    : '#S',
+      "\'win'  : ['#I #W'],
+      "\'cwin' : ['#I #W #F'],
+      "\'y'    : ['%R %a %Y'],
+      "\'z'    : '#H'}

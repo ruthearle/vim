@@ -100,3 +100,15 @@
 [submodule "pack/my-plugins/start/GoldenView"]
 	path = pack/my-plugins/start/GoldenView
 	url = git@github.com:zhaocai/GoldenView.Vim.git
+[submodule "pack/my-plugins/start/vimux"]
+	path = pack/my-plugins/start/vimux
+	url = git@github.com:benmills/vimux.git
+[submodule "pack/my-plugins/start/vimux-jest-test"]
+	path = pack/my-plugins/start/vimux-jest-test
+	url = git@github.com:tyewang/vimux-jest-test.git
+[submodule "pack/my-plugins/start/vim-test"]
+	path = pack/my-plugins/start/vim-test
+	url = git@github.com:janko/vim-test.git
+[submodule "pack/my-plugins/start/vim-notes"]
+	path = pack/my-plugins/start/vim-notes
+	url = git@github.com:xolox/vim-notes.git
