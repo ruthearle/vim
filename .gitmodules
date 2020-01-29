@@ -119,6 +119,7 @@
 [submodule "pack/my-plugins/start/vim-clap"]
 	path = pack/my-plugins/start/vim-clap
 	url = git@github.com:liuchengxu/vim-clap.git
+  ignore = dirty
 [submodule "pack/my-plugins/start/vista.vim"]
 	path = pack/my-plugins/start/vista.vim
 	url = https://github.com/liuchengxu/vista.vim.git
