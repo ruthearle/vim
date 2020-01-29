@@ -151,8 +151,8 @@ nnoremap ou O<ESC>
 nnoremap od o<ESC>
 
 "----------Gutentags https://github.com/ludovicchabant/vim-gutentags.git
-set statusline+=%{gutentags#statusline()} "show when its working
-let g:gutentags_cache_dir = '~/.allTags'
+"set statusline+=%{gutentags#statusline()} "show when its working
+"let g:gutentags_cache_dir = '~/.allTags'
 
 "--------bling/vim-airline settings---------
 "let g:airline_powerline_fonts = 1
