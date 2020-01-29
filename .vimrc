@@ -12,7 +12,7 @@ scriptencoding utf-8
 set rtp+=/usr/lib/python3.7/dist-packages/powerline/bindings/vim
 set laststatus=2
 let g:powerline_pycmd="py3"
-
+"--------------------------------
 filetype plugin indent on
 set runtimepath^=~/.vim/pack/my-plugins/start/ctrlp.vim
 
@@ -332,3 +332,6 @@ let test#strategy = "vimux"
       "\'cwin' : ['#I #W #F'],
       "\'y'    : ['%R %a %Y'],
       "\'z'    : '#H'}
+
+"------------https://github.com/xolox/vim-notes-------------
+let g:notes_directories = ['~/Code/notes']

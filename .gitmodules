@@ -67,6 +67,7 @@
 [submodule "pack/my-plugins/start/YouCompleteMe"]
 	path = pack/my-plugins/start/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
+  ignore = dirty
 [submodule "pack/my-plugins/start/vim-javascript"]
 	path = pack/my-plugins/start/vim-javascript
 	url = git@github.com:pangloss/vim-javascript.git
@@ -112,3 +113,6 @@
 [submodule "pack/my-plugins/start/vim-notes"]
 	path = pack/my-plugins/start/vim-notes
 	url = git@github.com:xolox/vim-notes.git
+[submodule "pack/my-plugins/start/vim-misc"]
+	path = pack/my-plugins/start/vim-misc
+	url = git@github.com:xolox/vim-misc.git
