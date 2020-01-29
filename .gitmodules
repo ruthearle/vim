@@ -116,3 +116,5 @@
 [submodule "pack/my-plugins/start/vim-misc"]
 	path = pack/my-plugins/start/vim-misc
 	url = git@github.com:xolox/vim-misc.git
+	path = editorconfig-vim
+	url = git@github.com:editorconfig/editorconfig-vim.git
