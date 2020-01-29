@@ -12,6 +12,7 @@ scriptencoding utf-8
 set rtp+=/usr/lib/python3.7/dist-packages/powerline/bindings/vim
 set laststatus=2
 let g:powerline_pycmd="py3"
+
 "--------------------------------
 filetype plugin indent on
 set runtimepath^=~/.vim/pack/my-plugins/start/ctrlp.vim
@@ -335,3 +336,10 @@ let test#strategy = "vimux"
 
 "------------https://github.com/xolox/vim-notes-------------
 let g:notes_directories = ['~/Code/notes']
+
+
+"------------ vim clap -----------------
+let g:clap_provider_dotfiles = {
+      \ 'source': ['~/.vimrc', '~/.bashrc', '~/.tmux.conf', '~/.tmuxline.conf', '~/.bash_it'],
+      \ 'sink': 'e',
+      \ }
