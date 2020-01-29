@@ -1,9 +1,6 @@
 [submodule "pack/my-plugins/start/ale"]
 	path = pack/my-plugins/start/ale
 	url = git@github.com:w0rp/ale.git
-[submodule "pack/my-plugins/start/guttentags"]
-	path = pack/my-plugins/start/guttentags
-	url = git@github.com:ludovicchabant/vim-gutentags.git
 [submodule "pack/my-plugins/start/vim-airline-themes"]
 	path = pack/my-plugins/start/vim-airline-themes
 	url = git@github.com:vim-airline/vim-airline-themes.git
@@ -61,10 +58,6 @@
 [submodule "pack/my-plugins/start/webapi-vim"]
 	path = pack/my-plugins/start/webapi-vim
 	url = git@github.com:mattn/webapi-vim.git
-[submodule "pack/my-plugins/start/YouCompleteMe"]
-	path = pack/my-plugins/start/YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git
-  ignore = dirty
 [submodule "pack/my-plugins/start/vim-javascript"]
 	path = pack/my-plugins/start/vim-javascript
 	url = git@github.com:pangloss/vim-javascript.git
@@ -113,10 +106,13 @@
 [submodule "pack/my-plugins/start/vim-misc"]
 	path = pack/my-plugins/start/vim-misc
 	url = git@github.com:xolox/vim-misc.git
-[submodule "pack/my-plugins/start/vim-clap"]
-	path = pack/my-plugins/start/vim-clap
-	url = git@github.com:liuchengxu/vim-clap.git
-  ignore = dirty
 [submodule "pack/my-plugins/start/vista.vim"]
 	path = pack/my-plugins/start/vista.vim
 	url = https://github.com/liuchengxu/vista.vim.git
+[submodule "pack/my-plugins/start/fzf.vim"]
+	path = pack/my-plugins/start/fzf.vim
+	url = git@github.com:junegunn/fzf.vim.git
+[submodule "pack/my-plugins/start/coc.nvim"]
+	path = pack/my-plugins/start/coc.nvim
+	url = git@github.com:neoclide/coc.nvim.git
+  ignore = dirty

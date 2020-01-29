@@ -150,48 +150,6 @@ vnoremap <tab> %
 nnoremap ou O<ESC>
 nnoremap od o<ESC>
 
-"----------Gutentags https://github.com/ludovicchabant/vim-gutentags.git
-"set statusline+=%{gutentags#statusline()} "show when its working
-"let g:gutentags_cache_dir = '~/.allTags'
-
-"--------bling/vim-airline settings---------
-"let g:airline_powerline_fonts = 1
-"let g:Powerline_symbols='unicode'
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#fnamemod=':t'
-"let g:airline#extensions#tabline#show_buffers = 1
-"let g:airline#extensions#tabline#buffer_nr_show = 1
-"let g:airline#extensions#tabline#show_tabs = 1
-"let g:airline#extensions#tabline#fnamecollapse = 1
-"let g:airline#extensions#tabline#fnametruncate = 0
-"let g:airline#extensions#hunks#non_zero_only = 1
-
-" Show PASTE if in paste mode
-"let g:airline_detect_paste = 1
-
-"let g:airline_inactive_collapse=1
-"let g:airline#extensions#bufferline#enabled = 0
-
-"if !exists('g:airline_symbols')
-  "let g:airline_symbols = {}
-"endif
-
-" unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-"let g:airline_symbols.whitespace = 'Ξ'
-"let g:airline_theme = 'codedark'
-"let g:airline_theme = 'minimalist'
-
 " Strips whitespace
 nnoremap <leader>fx :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -278,10 +236,6 @@ let g:move_key_modifier = 'C'
 " <C-k> Move up
 " <C-j> Move down
 
-"--------------ctrlp---------------
-let g:ctrlp_map = '<space><space>'
-let g:ctrlp_cmd = 'CtrlP'
-
 "-------------https://github.com/shime/vim-livedown--------------
 " should markdown preview get shown automatically upon opening markdown buffer
 let g:livedown_autorun = 1
@@ -343,3 +297,5 @@ let g:clap_provider_dotfiles = {
       \ 'source': ['~/.vimrc', '~/.bashrc', '~/.tmux.conf', '~/.tmuxline.conf', '~/.bash_it'],
       \ 'sink': 'e',
       \ }
+"let g:clap_provider_files = '<space><space>'
+let g:ctrlp_cmd = 'CtrlP'
