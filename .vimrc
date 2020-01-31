@@ -35,7 +35,7 @@ set shortmess+=a
 "set cmdheight=3          " Helps to show full execusion of commands
 set ts=2                  " Tab stop width
 set path=.,,**            " Set the path for vim to search for files
-"set nofoldenable          " Dont fold by default"
+set nofoldenable          " Dont fold by default"
 set foldmethod=indent     " Lets you hide sections
 set laststatus=2          " Always show statusbar - Need for powerline to show
 set noswapfile            " Self explanatory. No bloody swapfile already!
@@ -271,6 +271,9 @@ let g:notes_directories = ['~/Code/notes']
 let g:auto_save = 0
 
 "------------------ CoC --------------------
+" Multiline cursor support
+hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
+
 " multi cursor shortcuts
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 nmap <silent> <C-a> <Plug>(coc-cursors-word)
@@ -314,6 +317,27 @@ nmap <silent> gr <Plug>(coc-references)
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
+" Using CocList
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Show commands
+nnoremap <silent> <space>m  :<C-u>CocList commands<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Git status
+"set statusline^=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
+
 "------------------ fzf -----------------------------
 "let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 " for project wide search
@@ -324,6 +348,3 @@ command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)
 " [[B]Commits] Customize the options used by 'git log':
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-
-"------------------ Ultisnips ----------------
-let g:UltiSnipsExpandTrigger="<C-j>"
