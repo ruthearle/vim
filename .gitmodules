@@ -116,3 +116,9 @@
 	path = pack/my-plugins/start/coc.nvim
 	url = git@github.com:neoclide/coc.nvim.git
   ignore = dirty
+[submodule "pack/my-plugins/start/vim-auto-save"]
+	path = pack/my-plugins/start/vim-auto-save
+	url = git@github.com:907th/vim-auto-save.git
+[submodule "pack/my-plugins/start/auto-pairs"]
+	path = pack/my-plugins/start/auto-pairs
+	url = git://github.com/jiangmiao/auto-pairs.git

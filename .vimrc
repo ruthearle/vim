@@ -13,10 +13,7 @@ set rtp+=/usr/lib/python3.7/dist-packages/powerline/bindings/vim
 set laststatus=2
 let g:powerline_pycmd="py3"
 
-"--------------------------------
 filetype plugin indent on
-set runtimepath^=~/.vim/pack/my-plugins/start/ctrlp.vim
-
 let mapleader = ","
 
 "----------vim config shortcuts--------
@@ -53,10 +50,14 @@ set lazyredraw
 set nolist
 set listchars=eol:¬
 set hidden
+set nobackup
+set nowritebackup
 set hlsearch              " Highlight search items
 set incsearch             " Jump to the next search item as you type
 set nomodeline            " Ensure the vulnerability is covered
 set modelines=0           " Just to be sure :o)
+set updatetime=300
+set shortmess+=c
 hi Search cterm=italic ctermfg=black ctermbg=DarkMagenta
 
 "-------- Set colourscheme -----------
@@ -122,10 +123,6 @@ map ]b :bprevious<CR>
 
 "--------- Buffer -------------
 
-"------ Save on losing focus -----Not sure about this one--Using this now
-" because I am tmux'ing
-au FocusLost * :wa
-
 "------  Quick esc ---------
 inoremap jj <ESC>
 
@@ -143,8 +140,8 @@ set smartcase
 set gdefault
 set showmatch
 nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
+"nnoremap <tab> %
+"vnoremap <tab> %
 
 "------------- New lines without entering into insert mode --------
 nnoremap ou O<ESC>
@@ -154,9 +151,9 @@ nnoremap od o<ESC>
 nnoremap <leader>fx :%s/\s\+$//<cr>:let @/=''<CR>
 
 " --- type ° to search the word in all files in the current dir
-nmap ª :Ag <C-r>=expand("<cword>")<cr><cr>
-nnoremap <leader>k :exe 'Ag!' expand('<cword>')<cr>
-nnoremap <space>/ :Ag! <space>
+"nmap ª :Ag <C-r>=expand("<cword>")<cr><cr>
+"nnoremap <leader>k :exe 'Ag!' expand('<cword>')<cr>
+"nnoremap <space>/ :Ag! <space>
 
 " -------- Fugitive -------------------
 nnoremap <leader>gb :Gblame<CR>
@@ -176,16 +173,6 @@ nmap <silent> <C-g> <Plug>GoldenViewSplit
 "nmap <silent> <C-P> <Plug>GoldenViewPrevious
 nmap <silent> <S-F12> <Plug>GoldenViewSwitchMain
 nmap <silent> <F12> <Plug>GoldenViewSwitchToggle
-
-" ------------UltiSnips ---------------
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-set runtimepath+=~/.vim/UltiSnips/
-let g:UltiSnipsExpandTrigger="<C-k>"
-let g:UltiSnipsSnippetsDir='~/.vim/UltiSnips'
-"let g:UltiSnipsSnippetDirectories=["UltiSnips"]
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 " -------------OmniCompletion
 "filetype plugin on
@@ -277,25 +264,62 @@ nmap <silent> t<C-g> :TestVisit<CR>
 " make test commands execute using dispatch.vim
 let test#strategy = "vimux"
 
-"------------https://github.com/edkolev/tmuxline.vim----------
-"let g:airline#extensions#tmuxline#enabled = 1
-"let g:tmuxline_powerline_separators = 1
-"let airline#extensions#tmuxline#snapshot_file = "~/.tmuxline.conf"
-"let g:tmuxline_preset = {
-      "\'a'    : '#S',
-      "\'win'  : ['#I #W'],
-      "\'cwin' : ['#I #W #F'],
-      "\'y'    : ['%R %a %Y'],
-      "\'z'    : '#H'}
-
 "------------https://github.com/xolox/vim-notes-------------
 let g:notes_directories = ['~/Code/notes']
 
+"----------- vim autosave ----------
+let g:auto_save = 0
 
-"------------ vim clap -----------------
-let g:clap_provider_dotfiles = {
-      \ 'source': ['~/.vimrc', '~/.bashrc', '~/.tmux.conf', '~/.tmuxline.conf', '~/.bash_it'],
-      \ 'sink': 'e',
-      \ }
-"let g:clap_provider_files = '<space><space>'
-let g:ctrlp_cmd = 'CtrlP'
+"------------------ CoC --------------------
+" multi cursor shortcuts
+nmap <silent> <C-c> <Plug>(coc-cursors-position)
+nmap <silent> <C-a> <Plug>(coc-cursors-word)
+xmap <silent> <C-a> <Plug>(coc-cursors-range)
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other
+" plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+"------------------ fzf -----------------------------
+"let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+" for project wide search
+"map <leader>/ :Ag! <space>
+nnoremap <space><space> :Files <cr>
+nnoremap <space>c :Commits <cr>
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
