@@ -157,9 +157,9 @@ nnoremap <leader>fx :%s/\s\+$//<cr>:let @/=''<CR>
 
 " -------- Fugitive -------------------
 nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gs :Gstatus<CR>
+"nnoremap <leader>gs :Gstatus<CR> " Using fzf
 nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gl :Glog<CR>
+"nnoremap <leader>gl :Glog<CR>    " Using fzf
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gpu :Gpush<CR>
 nnoremap <leader>gpl :Gpull<CR>
@@ -318,14 +318,9 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 
 " Using CocList
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Show commands
 nnoremap <silent> <space>m  :<C-u>CocList commands<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Do default action for next item.
@@ -335,16 +330,40 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" Git status
-"set statusline^=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
-
-"------------------ fzf -----------------------------
-"let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
-" for project wide search
-"map <leader>/ :Ag! <space>
+" For project wide search
 nnoremap <space><space> :Files <cr>
-nnoremap <space>c :Commits <cr>
+" Git log
+nnoremap <space>tig :Commits <cr>
+" Git status
+nnoremap <space>gs :GFiles?<cr>
+" Search word in open buffers
+nnoremap <space>b :Buffers <cr>
+" Search lines across loaded buffers
+nnoremap <space>l :Lines <cr>
+" Search lines in current buffer
+nnoremap <space>bl :BLines <cr>
+" Search word under cursor across project
+nnoremap <space>w :Ag <cr>
+
+" Preview window for results
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)
 " [[B]Commits] Customize the options used by 'git log':
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+" Customize fzf colors to match your color scheme
+" - fzf#wrap translates this to a set of `--color` options
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+ \ 'bg':      ['bg', 'Normal'],
+ \ 'hl':      ['fg', 'Comment'],
+ \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+ \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+ \ 'hl+':     ['fg', 'Statement'],
+ \ 'info':    ['fg', 'PreProc'],
+ \ 'border':  ['fg', 'Ignore'],
+ \ 'prompt':  ['fg', 'Conditional'],
+ \ 'pointer': ['fg', 'Exception'],
+ \ 'marker':  ['fg', 'Keyword'],
+ \ 'spinner': ['fg', 'Label'],
+ \ 'header':  ['fg', 'Comment'] }
