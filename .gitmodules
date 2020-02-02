@@ -43,9 +43,6 @@
 [submodule "pack/my-plugins/start/vim-move"]
 	path = pack/my-plugins/start/vim-move
 	url = git@github.com:matze/vim-move.git
-[submodule "pack/my-plugins/start/vim-multiple-cursors"]
-	path = pack/my-plugins/start/vim-multiple-cursors
-	url = git@github.com:terryma/vim-multiple-cursors.git
 [submodule "pack/my-plugins/start/vim-ref"]
 	path = pack/my-plugins/start/vim-ref
 	url = git@github.com:thinca/vim-ref.git

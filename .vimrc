@@ -275,9 +275,8 @@ let g:auto_save = 0
 hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
 
 " multi cursor shortcuts
-nmap <silent> <C-c> <Plug>(coc-cursors-position)
-nmap <silent> <C-a> <Plug>(coc-cursors-word)
-xmap <silent> <C-a> <Plug>(coc-cursors-range)
+nmap <silent> <C-d> <Plug>(coc-cursors-word)
+xmap <silent> <C-d> <Plug>(coc-cursors-range)
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other
@@ -317,6 +316,9 @@ nmap <silent> gr <Plug>(coc-references)
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
+" Remap for refactor current word
+nmap <leader>rf <Plug>(coc-refactor)
+
 " Using CocList
 " Show commands
 nnoremap <silent> <space>m  :<C-u>CocList commands<cr>
@@ -330,6 +332,7 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+"----------------------- fzf ----------------------
 " For project wide search
 nnoremap <space><space> :Files <cr>
 " Git log
