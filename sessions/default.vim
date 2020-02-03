@@ -26,8 +26,6 @@ inoremap <Right> <Nop>
 inoremap <Left> <Nop>
 inoremap <Down> <Nop>
 inoremap <Up> <Nop>
-xmap <silent>  <Plug>(coc-cursors-range)
-nmap <silent>  <Plug>(coc-cursors-word)
 nmap <silent>  <Plug>GoldenViewSplit
 nmap  <Plug>MoveCharLeft
 vmap  <Plug>MoveBlockLeft
@@ -72,7 +70,9 @@ xmap ,c  <Plug>NERDCommenterToggle
 nmap ,c  <Plug>NERDCommenterToggle
 xmap ,cc <Plug>NERDCommenterComment
 nmap ,cc <Plug>NERDCommenterComment
+nmap ,e :CocCommand explorer
 nmap ,rf <Plug>(coc-refactor)
+nmap ,ra :CocSearch -w 
 nmap ,rn <Plug>(coc-rename)
 noremap <silent> ,f :VimFilerExplorer -split -simple -winwidth=35 -explorer -no-quit
 nnoremap ,q. :BufOnly
@@ -131,6 +131,93 @@ nmap ySs <Plug>YSsurround
 nmap yss <Plug>Yssurround
 nmap yS <Plug>YSurround
 nmap ys <Plug>Ysurround
+vnoremap <silent> <Plug>(coc-explorer-action-v->>) :call coc#rpc#request('doKeymap', ['explorer-action-v->>'])
+nnoremap <silent> <Plug>(coc-explorer-action-n->>) :call coc#rpc#request('doKeymap', ['explorer-action-n->>'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-<<) :call coc#rpc#request('doKeymap', ['explorer-action-v-<<'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-<<) :call coc#rpc#request('doKeymap', ['explorer-action-n-<<'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-]c) :call coc#rpc#request('doKeymap', ['explorer-action-v-]c'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-]c) :call coc#rpc#request('doKeymap', ['explorer-action-n-]c'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-[c) :call coc#rpc#request('doKeymap', ['explorer-action-v-[c'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-[c) :call coc#rpc#request('doKeymap', ['explorer-action-n-[c'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-]d) :call coc#rpc#request('doKeymap', ['explorer-action-v-]d'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-]d) :call coc#rpc#request('doKeymap', ['explorer-action-n-]d'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-[d) :call coc#rpc#request('doKeymap', ['explorer-action-v-[d'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-[d) :call coc#rpc#request('doKeymap', ['explorer-action-n-[d'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-]]) :call coc#rpc#request('doKeymap', ['explorer-action-v-]]'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-]]) :call coc#rpc#request('doKeymap', ['explorer-action-n-]]'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-[[) :call coc#rpc#request('doKeymap', ['explorer-action-v-[['])
+nnoremap <silent> <Plug>(coc-explorer-action-n-[[) :call coc#rpc#request('doKeymap', ['explorer-action-n-[['])
+vnoremap <silent> <Plug>(coc-explorer-action-v-gb) :call coc#rpc#request('doKeymap', ['explorer-action-v-gb'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-gb) :call coc#rpc#request('doKeymap', ['explorer-action-n-gb'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-gf) :call coc#rpc#request('doKeymap', ['explorer-action-v-gf'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-gf) :call coc#rpc#request('doKeymap', ['explorer-action-n-gf'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-F) :call coc#rpc#request('doKeymap', ['explorer-action-v-F'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-F) :call coc#rpc#request('doKeymap', ['explorer-action-n-F'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-f) :call coc#rpc#request('doKeymap', ['explorer-action-v-f'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-f) :call coc#rpc#request('doKeymap', ['explorer-action-n-f'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-gd) :call coc#rpc#request('doKeymap', ['explorer-action-v-gd'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-gd) :call coc#rpc#request('doKeymap', ['explorer-action-n-gd'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-X) :call coc#rpc#request('doKeymap', ['explorer-action-v-X'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-X) :call coc#rpc#request('doKeymap', ['explorer-action-n-X'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-q) :call coc#rpc#request('doKeymap', ['explorer-action-v-q'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-q) :call coc#rpc#request('doKeymap', ['explorer-action-n-q'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-?) :call coc#rpc#request('doKeymap', ['explorer-action-v-?'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-?) :call coc#rpc#request('doKeymap', ['explorer-action-n-?'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-R) :call coc#rpc#request('doKeymap', ['explorer-action-v-R'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-R) :call coc#rpc#request('doKeymap', ['explorer-action-n-R'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-.) :call coc#rpc#request('doKeymap', ['explorer-action-v-.'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-.) :call coc#rpc#request('doKeymap', ['explorer-action-n-.'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-r) :call coc#rpc#request('doKeymap', ['explorer-action-v-r'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-r) :call coc#rpc#request('doKeymap', ['explorer-action-n-r'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-A) :call coc#rpc#request('doKeymap', ['explorer-action-v-A'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-A) :call coc#rpc#request('doKeymap', ['explorer-action-n-A'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-a) :call coc#rpc#request('doKeymap', ['explorer-action-v-a'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-a) :call coc#rpc#request('doKeymap', ['explorer-action-n-a'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-D) :call coc#rpc#request('doKeymap', ['explorer-action-v-D'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-D) :call coc#rpc#request('doKeymap', ['explorer-action-n-D'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-d) :call coc#rpc#request('doKeymap', ['explorer-action-v-d'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-d) :call coc#rpc#request('doKeymap', ['explorer-action-n-d'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-p) :call coc#rpc#request('doKeymap', ['explorer-action-v-p'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-p) :call coc#rpc#request('doKeymap', ['explorer-action-n-p'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-x) :call coc#rpc#request('doKeymap', ['explorer-action-v-x'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-x) :call coc#rpc#request('doKeymap', ['explorer-action-n-x'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-c) :call coc#rpc#request('doKeymap', ['explorer-action-v-c'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-c) :call coc#rpc#request('doKeymap', ['explorer-action-n-c'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-Y) :call coc#rpc#request('doKeymap', ['explorer-action-v-Y'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-Y) :call coc#rpc#request('doKeymap', ['explorer-action-n-Y'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-y) :call coc#rpc#request('doKeymap', ['explorer-action-v-y'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-y) :call coc#rpc#request('doKeymap', ['explorer-action-n-y'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-gp) :call coc#rpc#request('doKeymap', ['explorer-action-v-gp'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-gp) :call coc#rpc#request('doKeymap', ['explorer-action-n-gp'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-[bs]) :call coc#rpc#request('doKeymap', ['explorer-action-v-[bs]'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-[bs]) :call coc#rpc#request('doKeymap', ['explorer-action-n-[bs]'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-t) :call coc#rpc#request('doKeymap', ['explorer-action-v-t'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-t) :call coc#rpc#request('doKeymap', ['explorer-action-n-t'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-E) :call coc#rpc#request('doKeymap', ['explorer-action-v-E'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-E) :call coc#rpc#request('doKeymap', ['explorer-action-n-E'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-e) :call coc#rpc#request('doKeymap', ['explorer-action-v-e'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-e) :call coc#rpc#request('doKeymap', ['explorer-action-n-e'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-[cr]) :call coc#rpc#request('doKeymap', ['explorer-action-v-[cr]'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-[cr]) :call coc#rpc#request('doKeymap', ['explorer-action-n-[cr]'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-o) :call coc#rpc#request('doKeymap', ['explorer-action-n-o'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-gh) :call coc#rpc#request('doKeymap', ['explorer-action-v-gh'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-gh) :call coc#rpc#request('doKeymap', ['explorer-action-n-gh'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-gl) :call coc#rpc#request('doKeymap', ['explorer-action-v-gl'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-gl) :call coc#rpc#request('doKeymap', ['explorer-action-n-gl'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-K) :call coc#rpc#request('doKeymap', ['explorer-action-v-K'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-K) :call coc#rpc#request('doKeymap', ['explorer-action-n-K'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-J) :call coc#rpc#request('doKeymap', ['explorer-action-v-J'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-J) :call coc#rpc#request('doKeymap', ['explorer-action-n-J'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-l) :call coc#rpc#request('doKeymap', ['explorer-action-v-l'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-l) :call coc#rpc#request('doKeymap', ['explorer-action-n-l'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-h) :call coc#rpc#request('doKeymap', ['explorer-action-v-h'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-h) :call coc#rpc#request('doKeymap', ['explorer-action-n-h'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-[tab]) :call coc#rpc#request('doKeymap', ['explorer-action-v-[tab]'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-[tab]) :call coc#rpc#request('doKeymap', ['explorer-action-n-[tab]'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-*) :call coc#rpc#request('doKeymap', ['explorer-action-v-*'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-*) :call coc#rpc#request('doKeymap', ['explorer-action-n-*'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-j) :call coc#rpc#request('doKeymap', ['explorer-action-n-j'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-k) :call coc#rpc#request('doKeymap', ['explorer-action-n-k'])
 xnoremap <silent> <Plug>(coc-git-chunk-outer) :call coc#rpc#request('doKeymap', ['git-chunk-outer'])
 onoremap <silent> <Plug>(coc-git-chunk-outer) :call coc#rpc#request('doKeymap', ['git-chunk-outer'])
 xnoremap <silent> <Plug>(coc-git-chunk-inner) :call coc#rpc#request('doKeymap', ['git-chunk-inner'])
@@ -261,8 +348,6 @@ xnoremap <silent> <Plug>NERDCommenterToggle :call NERDComment("x", "Toggle")
 nnoremap <silent> <Plug>NERDCommenterToggle :call NERDComment("n", "Toggle")
 xnoremap <silent> <Plug>NERDCommenterComment :call NERDComment("x", "Comment")
 nnoremap <silent> <Plug>NERDCommenterComment :call NERDComment("n", "Comment")
-xmap <silent> <C-D> <Plug>(coc-cursors-range)
-nmap <silent> <C-D> <Plug>(coc-cursors-word)
 vnoremap <silent> <F2> :JSHint
 nnoremap <silent> <F2> :JSHint
 nmap <silent> <F12> <Plug>GoldenViewSwitchToggle
@@ -304,7 +389,7 @@ set omnifunc=syntaxcomplete#Complete
 set path=.,,**
 set pyxversion=3
 set ruler
-set runtimepath=~/.vim,~/.vim/pack/my-plugins/start/webapi-vim,~/.vim/pack/my-plugins/start/vista.vim,~/.vim/pack/my-plugins/start/vimux-jest-test,~/.vim/pack/my-plugins/start/vimux,~/.vim/pack/my-plugins/start/vimfiler.vim,~/.vim/pack/my-plugins/start/vim-yaml,~/.vim/pack/my-plugins/start/vim-wakatime,~/.vim/pack/my-plugins/start/vim-test,~/.vim/pack/my-plugins/start/vim-surround,~/.vim/pack/my-plugins/start/vim-startify,~/.vim/pack/my-plugins/start/vim-snippets,~/.vim/pack/my-plugins/start/vim-ref,~/.vim/pack/my-plugins/start/vim-polyglot,~/.vim/pack/my-plugins/start/vim-notes,~/.vim/pack/my-plugins/start/vim-multiple-cursors,~/.vim/pack/my-plugins/start/vim-move,~/.vim/pack/my-plugins/start/vim-misc,~/.vim/pack/my-plugins/start/vim-markdown,~/.vim/pack/my-plugins/start/vim-livedown,~/.vim/pack/my-plugins/start/vim-jsx,~/.vim/pack/my-plugins/start/vim-js-indent,~/.vim/pack/my-plugins/start/vim-javascript,~/.vim/pack/my-plugins/start/vim-git,~/.vim/pack/my-plugins/start/vim-fugitive,~/.vim/pack/my-plugins/start/vim-dispatch,~/.vim/pack/my-plugins/start/vim-code-dark,~/.vim/pack/my-plugins/start/vim-bbye,~/.vim/pack/my-plugins/start/vim-auto-save,~/.vim/pack/my-plugins/start/unite.vim,~/.vim/pack/my-plugins/start/ultisnips,~/.vim/pack/my-plugins/start/tmuxline.vim,~/.vim/pack/my-plugins/start/fzf.vim,~/.vim/pack/my-plugins/start/editorconfig-vim,~/.vim/pack/my-plugins/start/coc.nvim,~/.vim/pack/my-plugins/start/ale,~/.vim/pack/my-plugins/start/ag.vim,~/.vim/pack/my-plugins/start/GoldenView,/usr/share/vim/vimfiles,/usr/share/vim/vim82,~/.vim/pack/my-plugins/start/vim-yaml/after,~/.vim/pack/my-plugins/start/vim-polyglot/after,~/.vim/pack/my-plugins/start/vim-jsx/after,~/.vim/pack/my-plugins/start/vim-javascript/after,/usr/share/vim/vimfiles/after,~/.vim/after,/usr/lib/python3.7/dist-packages/powerline/bindings/vim
+set runtimepath=~/.config/coc/extensions/node_modules/coc-explorer,~/.vim,~/.vim/pack/my-plugins/start/webapi-vim,~/.vim/pack/my-plugins/start/vista.vim,~/.vim/pack/my-plugins/start/vimux-jest-test,~/.vim/pack/my-plugins/start/vimux,~/.vim/pack/my-plugins/start/vimfiler.vim,~/.vim/pack/my-plugins/start/vim-yaml,~/.vim/pack/my-plugins/start/vim-wakatime,~/.vim/pack/my-plugins/start/vim-test,~/.vim/pack/my-plugins/start/vim-surround,~/.vim/pack/my-plugins/start/vim-startify,~/.vim/pack/my-plugins/start/vim-snippets,~/.vim/pack/my-plugins/start/vim-ref,~/.vim/pack/my-plugins/start/vim-polyglot,~/.vim/pack/my-plugins/start/vim-notes,~/.vim/pack/my-plugins/start/vim-move,~/.vim/pack/my-plugins/start/vim-misc,~/.vim/pack/my-plugins/start/vim-markdown,~/.vim/pack/my-plugins/start/vim-livedown,~/.vim/pack/my-plugins/start/vim-jsx,~/.vim/pack/my-plugins/start/vim-js-indent,~/.vim/pack/my-plugins/start/vim-javascript,~/.vim/pack/my-plugins/start/vim-git,~/.vim/pack/my-plugins/start/vim-fugitive,~/.vim/pack/my-plugins/start/vim-dispatch,~/.vim/pack/my-plugins/start/vim-devicons,~/.vim/pack/my-plugins/start/vim-code-dark,~/.vim/pack/my-plugins/start/vim-bbye,~/.vim/pack/my-plugins/start/vim-auto-save,~/.vim/pack/my-plugins/start/unite.vim,~/.vim/pack/my-plugins/start/ultisnips,~/.vim/pack/my-plugins/start/tmuxline.vim,~/.vim/pack/my-plugins/start/fzf.vim,~/.vim/pack/my-plugins/start/editorconfig-vim,~/.vim/pack/my-plugins/start/coc.nvim,~/.vim/pack/my-plugins/start/ale,~/.vim/pack/my-plugins/start/ag.vim,~/.vim/pack/my-plugins/start/GoldenView,/usr/share/vim/vimfiles,/usr/share/vim/vim82,~/.vim/pack/my-plugins/start/vim-yaml/after,~/.vim/pack/my-plugins/start/vim-polyglot/after,~/.vim/pack/my-plugins/start/vim-jsx/after,~/.vim/pack/my-plugins/start/vim-javascript/after,/usr/share/vim/vimfiles/after,~/.vim/after,/usr/lib/python3.7/dist-packages/powerline/bindings/vim
 set shiftwidth=2
 set shortmess=filnxtToOSacI
 set showmatch
@@ -318,20 +403,20 @@ set tabline=%!py3eval('powerline.tabline()')
 set tabstop=2
 set undodir=~/.cache/vim/undo//
 set updatetime=300
+set window=49
 set nowritebackup
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/.vim
+cd ~/Code/salestrip/api
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
 argglobal
 %argdel
-$argadd .git/config
-edit .git/config
+edit ~/.vimrc
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -341,9 +426,21 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
+vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
+nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
+vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*endf\%[unction]\>', "bW")
+nnoremap <buffer> <silent> [] m':call search('^\s*endf\%[unction]\>', "bW")
+vnoremap <buffer> <silent> [[ m':exe "normal! gv"|call search('^\s*fu\%[nction]\>', "bW")
+nnoremap <buffer> <silent> [[ m':call search('^\s*fu\%[nction]\>', "bW")
+vnoremap <buffer> <silent> ]" :exe "normal! gv"|call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
+nnoremap <buffer> <silent> ]" :call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
+vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*endf\%[unction]\>', "W")
+nnoremap <buffer> <silent> ][ m':call search('^\s*endf\%[unction]\>', "W")
+vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*fu\%[nction]\>', "W")
+nnoremap <buffer> <silent> ]] m':call search('^\s*fu\%[nction]\>', "W")
 setlocal keymap=
 setlocal noarabic
-setlocal autoindent
+setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
 setlocal nobinary
@@ -357,8 +454,8 @@ setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=:#,:;
-setlocal commentstring=;\ %s
+setlocal comments=sO:\"\ -,mO:\"\ \ ,eO:\"\",:\"
+setlocal commentstring=\"%s
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -375,8 +472,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'gitconfig'
-setlocal filetype=gitconfig
+if &filetype != 'vim'
+setlocal filetype=vim
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -400,11 +497,11 @@ setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetGitconfigIndent()
-setlocal indentkeys=o,O,*<Return>,0[,],0;,0#,=,!^F
+setlocal indentexpr=GetVimIndent()
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e,=end,=else,=cat,=fina,=END,0\\,0=\"\\\ 
 setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
+setlocal iskeyword=@,48-57,_,192-255,#
+setlocal keywordprg=:help
 setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
@@ -441,12 +538,12 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%!py3eval('powerline.statusline(1)')
+setlocal statusline=%!py3eval('powerline.statusline(5)')
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'gitconfig'
-setlocal syntax=gitconfig
+if &syntax != 'vim'
+setlocal syntax=vim
 endif
 setlocal tabstop=2
 setlocal tagcase=
@@ -455,7 +552,7 @@ setlocal tags=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
-setlocal textwidth=0
+setlocal textwidth=78
 setlocal thesaurus=
 setlocal noundofile
 setlocal undolevels=-123456
@@ -466,14 +563,15 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 19) / 39)
+let s:l = 349 - ((24 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+349
+normal! 066|
 tabnext 1
-badd +0 .git/config
+badd +349 ~/.vimrc
+badd +2 ~/.vim/coc-settings.json
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -485,6 +583,7 @@ if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &so = s:so_save | let &siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

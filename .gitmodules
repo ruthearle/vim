@@ -113,3 +113,6 @@
 [submodule "pack/my-plugins/start/vim-auto-save"]
 	path = pack/my-plugins/start/vim-auto-save
 	url = git@github.com:907th/vim-auto-save.git
+[submodule "pack/my-plugins/start/vim-devicons"]
+	path = pack/my-plugins/start/vim-devicons
+	url = git@github.com:ryanoasis/vim-devicons.git

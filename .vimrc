@@ -9,6 +9,7 @@ python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
 scriptencoding utf-8
+set encoding=UTF-8
 set rtp+=/usr/lib/python3.7/dist-packages/powerline/bindings/vim
 set laststatus=2
 let g:powerline_pycmd="py3"
@@ -209,6 +210,9 @@ let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_file_icon = '-'
 let g:vimfiler_marked_file_icon = '*'
 let g:vimfiler_quick_look_command = 'gloobus preview'
+let g:vimfiler_options_winwidth = 1
+let g:vimfiler_options_winheight = 1
+let g:vimfiler_options_fnamewidth = 1
 
 noremap <silent><leader>f :<C-u>VimFilerExplorer -split -simple -winwidth=35 -explorer -no-quit<CR>
 
@@ -274,9 +278,17 @@ let g:auto_save = 0
 " Multiline cursor support
 hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
 
-" multi cursor shortcuts
-nmap <silent> <C-d> <Plug>(coc-cursors-word)
-xmap <silent> <C-d> <Plug>(coc-cursors-range)
+" multi cursor shortcuts "not sure if this is need now I have refactor/rename
+"nmap <silent> <C-d> <Plug>(coc-cursors-word)
+"xmap <silent> <C-d> <Plug>(coc-cursors-range)
+
+"nmap <expr> <silent> <C-d> <SID>select_current_word()
+"function! s:select_current_word()
+  "if !get(g:, 'coc_cursors_activated', 0)
+    "return "\<Plug>(coc-cursors-word)"
+  "endif
+  "return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
+"endfunc
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other
@@ -315,6 +327,8 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
+" Remap for rename current word across files
+nmap <leader>ra :CocSearch -w <cr>
 
 " Remap for refactor current word
 nmap <leader>rf <Plug>(coc-refactor)
@@ -332,6 +346,8 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+" File explorer - beta but so promising. Much faster than vimfiler
+nmap <leader>e :CocCommand explorer<CR>
 "----------------------- fzf ----------------------
 " For project wide search
 nnoremap <space><space> :Files <cr>
@@ -370,3 +386,9 @@ let g:fzf_colors =
  \ 'marker':  ['fg', 'Keyword'],
  \ 'spinner': ['fg', 'Label'],
  \ 'header':  ['fg', 'Comment'] }
+
+"--------------- Devicons --------------------
+" loading the plugin
+let g:webdevicons_enable = 1
+" adding the column to vimfiler
+let g:webdevicons_enable_vimfiler = 1
