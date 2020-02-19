@@ -36,7 +36,7 @@ set shortmess+=a
 "set cmdheight=3          " Helps to show full execusion of commands
 set ts=2                  " Tab stop width
 set path=.,,**            " Set the path for vim to search for files
-set nofoldenable          " Dont fold by default"
+"set nofoldenable          " Dont fold by default"
 set foldmethod=indent     " Lets you hide sections
 set laststatus=2          " Always show statusbar - Need for powerline to show
 set noswapfile            " Self explanatory. No bloody swapfile already!
@@ -162,6 +162,7 @@ nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gd :Gdiff<CR>
 "nnoremap <leader>gl :Glog<CR>    " Using fzf
 nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gpu :Gpush<CR>
 nnoremap <leader>gpl :Gpull<CR>
 
@@ -203,7 +204,7 @@ nnoremap <Leader>q. :BufOnly<CR>
 
 
 "------------Vimfiler-------------
-let g:vimfiler_as_default_explorer = 1
+"let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
@@ -257,6 +258,10 @@ highlight ALEError ctermfg=black ctermbg=DarkRed
 highlight ALEWarn ctermfg=black ctermbg=DarkYellow
 highlight ALEErrorSign ctermfg=black ctermbg=DarkRed
 highlight ALEWarningSign ctermfg=black ctermbg=DarkYellow
+" Navigate linting errors
+nnoremap <space>l :lnext<CR>
+nnoremap <space>p :lnext<CR>
+nnoremap <space>r :lnext<CR>
 
 "-------------- vim test -----------------
 nmap <silent> t<C-n> :TestNearest<CR>
@@ -347,7 +352,7 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " File explorer - beta but so promising. Much faster than vimfiler
-nmap <leader>e :CocCommand explorer<CR>
+nmap <leader>p :CocCommand explorer<CR>
 "----------------------- fzf ----------------------
 " For project wide search
 nnoremap <space><space> :Files <cr>
