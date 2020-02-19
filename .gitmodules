@@ -116,7 +116,4 @@
 [submodule "pack/my-plugins/start/vim-devicons"]
 	path = pack/my-plugins/start/vim-devicons
 	url = git@github.com:ryanoasis/vim-devicons.git
-[submodule "pack/my-plugins/start/ultisnips"]
-  path = pack/my-plugins/start/ultisnips
-  url = git@github.com:SirVer/ultisnips.git
 
