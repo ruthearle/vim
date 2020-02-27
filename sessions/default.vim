@@ -7,6 +7,7 @@ inoremap <silent> <expr> <Plug>(coc-snippets-expand) coc#_insert_key('request', 
 imap <C-G>S <Plug>ISurround
 imap <C-G>s <Plug>Isurround
 imap <C-S> <Plug>Isurround
+inoremap <silent> <C-Tab> =UltiSnips#ListSnippets()
 inoremap <silent> <Plug>(fzf-maps-i) :call fzf#vim#maps('i', 0)
 inoremap <expr> <Plug>(fzf-complete-buffer-line) fzf#vim#complete#buffer_line()
 inoremap <expr> <Plug>(fzf-complete-line) fzf#vim#complete#line()
@@ -26,15 +27,18 @@ inoremap <Right> <Nop>
 inoremap <Left> <Nop>
 inoremap <Down> <Nop>
 inoremap <Up> <Nop>
+xmap <silent>  <Plug>(coc-cursors-range)
 nmap <silent>  <Plug>GoldenViewSplit
+snoremap <silent>  "_c
 nmap  <Plug>MoveCharLeft
-vmap  <Plug>MoveBlockLeft
+xmap  <Plug>MoveBlockLeft
 nmap <NL> <Plug>MoveLineDown
 vmap <NL> <Plug>MoveBlockDown
 nmap  <Plug>MoveLineUp
 vmap  <Plug>MoveBlockUp
 nmap  <Plug>MoveCharRight
 vmap  <Plug>MoveBlockRight
+snoremap  "_c
 nnoremap  w :Ag 
 nnoremap  bl :BLines 
 nnoremap  b :Buffers 
@@ -93,6 +97,8 @@ nnoremap ,vrc :split ~/.vimrc
 vnoremap / /\v
 nnoremap / /\v
 nnoremap ; :
+xnoremap <silent> <nop> :call UltiSnips#SaveLastVisualSelection()gvs
+snoremap <silent> <nop> :call UltiSnips#ExpandSnippet()
 vmap <silent> K <Plug>(ref-keyword)
 xmap S <Plug>VSurround
 map [b :bnext
@@ -197,11 +203,15 @@ vnoremap <silent> <Plug>(coc-explorer-action-v-t) :call coc#rpc#request('doKey
 nnoremap <silent> <Plug>(coc-explorer-action-n-t) :call coc#rpc#request('doKeymap', ['explorer-action-n-t'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-E) :call coc#rpc#request('doKeymap', ['explorer-action-v-E'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-E) :call coc#rpc#request('doKeymap', ['explorer-action-n-E'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-s) :call coc#rpc#request('doKeymap', ['explorer-action-v-s'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-s) :call coc#rpc#request('doKeymap', ['explorer-action-n-s'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-e) :call coc#rpc#request('doKeymap', ['explorer-action-v-e'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-e) :call coc#rpc#request('doKeymap', ['explorer-action-n-e'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-[cr]) :call coc#rpc#request('doKeymap', ['explorer-action-v-[cr]'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-[cr]) :call coc#rpc#request('doKeymap', ['explorer-action-n-[cr]'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-o) :call coc#rpc#request('doKeymap', ['explorer-action-n-o'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-[2-LeftMouse]) :call coc#rpc#request('doKeymap', ['explorer-action-v-[2-LeftMouse]'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-[2-LeftMouse]) :call coc#rpc#request('doKeymap', ['explorer-action-n-[2-LeftMouse]'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-gh) :call coc#rpc#request('doKeymap', ['explorer-action-v-gh'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-gh) :call coc#rpc#request('doKeymap', ['explorer-action-n-gh'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-gl) :call coc#rpc#request('doKeymap', ['explorer-action-v-gl'])
@@ -214,12 +224,16 @@ vnoremap <silent> <Plug>(coc-explorer-action-v-l) :call coc#rpc#request('doKey
 nnoremap <silent> <Plug>(coc-explorer-action-n-l) :call coc#rpc#request('doKeymap', ['explorer-action-n-l'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-h) :call coc#rpc#request('doKeymap', ['explorer-action-v-h'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-h) :call coc#rpc#request('doKeymap', ['explorer-action-n-h'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-gj) :call coc#rpc#request('doKeymap', ['explorer-action-v-gj'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-gj) :call coc#rpc#request('doKeymap', ['explorer-action-n-gj'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-gk) :call coc#rpc#request('doKeymap', ['explorer-action-v-gk'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-gk) :call coc#rpc#request('doKeymap', ['explorer-action-n-gk'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-j) :call coc#rpc#request('doKeymap', ['explorer-action-n-j'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-k) :call coc#rpc#request('doKeymap', ['explorer-action-n-k'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-[tab]) :call coc#rpc#request('doKeymap', ['explorer-action-v-[tab]'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-[tab]) :call coc#rpc#request('doKeymap', ['explorer-action-n-[tab]'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-*) :call coc#rpc#request('doKeymap', ['explorer-action-v-*'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-*) :call coc#rpc#request('doKeymap', ['explorer-action-n-*'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-j) :call coc#rpc#request('doKeymap', ['explorer-action-n-j'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-k) :call coc#rpc#request('doKeymap', ['explorer-action-n-k'])
 xnoremap <silent> <Plug>(coc-git-chunk-outer) :call coc#rpc#request('doKeymap', ['git-chunk-outer'])
 onoremap <silent> <Plug>(coc-git-chunk-outer) :call coc#rpc#request('doKeymap', ['git-chunk-outer'])
 xnoremap <silent> <Plug>(coc-git-chunk-inner) :call coc#rpc#request('doKeymap', ['git-chunk-inner'])
@@ -229,6 +243,7 @@ nnoremap <silent> <Plug>(coc-git-chunkinfo) :call coc#rpc#notify('doKeymap', [
 nnoremap <silent> <Plug>(coc-git-prevchunk) :call coc#rpc#notify('doKeymap', ['git-prevchunk'])
 nnoremap <silent> <Plug>(coc-git-nextchunk) :call coc#rpc#notify('doKeymap', ['git-nextchunk'])
 vnoremap <silent> <Plug>(coc-snippets-select) :call coc#rpc#notify('doKeymap', ['snippets-select'])
+snoremap <silent> <C-H> "_c
 nnoremap <silent> <Plug>(vimfiler_simple) :VimFilerSimple
 nnoremap <silent> <Plug>(vimfiler_create) :VimFilerCreate
 nnoremap <silent> <Plug>(vimfiler_switch) :VimFiler
@@ -242,9 +257,13 @@ nmap <C-H> <Plug>MoveCharLeft
 nmap <C-K> <Plug>MoveLineUp
 nmap <C-J> <Plug>MoveLineDown
 vmap <C-L> <Plug>MoveBlockRight
-vmap <C-H> <Plug>MoveBlockLeft
 vmap <C-K> <Plug>MoveBlockUp
 vmap <C-J> <Plug>MoveBlockDown
+snoremap <C-R> "_c
+xmap <C-H> <Plug>MoveBlockLeft
+snoremap <silent> <Del> "_c
+snoremap <silent> <BS> "_c
+snoremap <silent> <C-Tab> :call UltiSnips#ListSnippets()
 onoremap <silent> <Plug>(fzf-maps-o) :call fzf#vim#maps('o', 0)
 xnoremap <silent> <Plug>(fzf-maps-x) :call fzf#vim#maps('x', 0)
 nnoremap <silent> <Plug>(fzf-maps-n) :call fzf#vim#maps('n', 0)
@@ -350,6 +369,7 @@ xnoremap <silent> <Plug>NERDCommenterToggle :call NERDComment("x", "Toggle")
 nnoremap <silent> <Plug>NERDCommenterToggle :call NERDComment("n", "Toggle")
 xnoremap <silent> <Plug>NERDCommenterComment :call NERDComment("x", "Comment")
 nnoremap <silent> <Plug>NERDCommenterComment :call NERDComment("n", "Comment")
+xmap <silent> <C-D> <Plug>(coc-cursors-range)
 vnoremap <silent> <F2> :JSHint
 nnoremap <silent> <F2> :JSHint
 nmap <silent> <F12> <Plug>GoldenViewSwitchToggle
@@ -366,6 +386,7 @@ nnoremap <Up> <Nop>
 imap S <Plug>ISurround
 imap s <Plug>Isurround
 imap  <Plug>Isurround
+inoremap <silent> <nop> =UltiSnips#ExpandSnippet()
 inoremap jj 
 let &cpo=s:cpo_save
 unlet s:cpo_save
@@ -391,7 +412,7 @@ set omnifunc=syntaxcomplete#Complete
 set path=.,,**
 set pyxversion=3
 set ruler
-set runtimepath=~/.config/coc/extensions/node_modules/coc-explorer,~/.vim,~/.vim/pack/my-plugins/start/webapi-vim,~/.vim/pack/my-plugins/start/vista.vim,~/.vim/pack/my-plugins/start/vimux-jest-test,~/.vim/pack/my-plugins/start/vimux,~/.vim/pack/my-plugins/start/vimfiler.vim,~/.vim/pack/my-plugins/start/vim-yaml,~/.vim/pack/my-plugins/start/vim-wakatime,~/.vim/pack/my-plugins/start/vim-test,~/.vim/pack/my-plugins/start/vim-surround,~/.vim/pack/my-plugins/start/vim-startify,~/.vim/pack/my-plugins/start/vim-snippets,~/.vim/pack/my-plugins/start/vim-ref,~/.vim/pack/my-plugins/start/vim-polyglot,~/.vim/pack/my-plugins/start/vim-notes,~/.vim/pack/my-plugins/start/vim-move,~/.vim/pack/my-plugins/start/vim-misc,~/.vim/pack/my-plugins/start/vim-markdown,~/.vim/pack/my-plugins/start/vim-livedown,~/.vim/pack/my-plugins/start/vim-jsx,~/.vim/pack/my-plugins/start/vim-js-indent,~/.vim/pack/my-plugins/start/vim-javascript,~/.vim/pack/my-plugins/start/vim-git,~/.vim/pack/my-plugins/start/vim-fugitive,~/.vim/pack/my-plugins/start/vim-dispatch,~/.vim/pack/my-plugins/start/vim-devicons,~/.vim/pack/my-plugins/start/vim-code-dark,~/.vim/pack/my-plugins/start/vim-bbye,~/.vim/pack/my-plugins/start/vim-auto-save,~/.vim/pack/my-plugins/start/unite.vim,~/.vim/pack/my-plugins/start/ultisnips,~/.vim/pack/my-plugins/start/tmuxline.vim,~/.vim/pack/my-plugins/start/fzf.vim,~/.vim/pack/my-plugins/start/editorconfig-vim,~/.vim/pack/my-plugins/start/coc.nvim,~/.vim/pack/my-plugins/start/ale,~/.vim/pack/my-plugins/start/ag.vim,~/.vim/pack/my-plugins/start/GoldenView,/usr/share/vim/vimfiles,/usr/share/vim/vim82,~/.vim/pack/my-plugins/start/vim-yaml/after,~/.vim/pack/my-plugins/start/vim-polyglot/after,~/.vim/pack/my-plugins/start/vim-jsx/after,~/.vim/pack/my-plugins/start/vim-javascript/after,/usr/share/vim/vimfiles/after,~/.vim/after,/usr/lib/python3.7/dist-packages/powerline/bindings/vim
+set runtimepath=~/.config/coc/extensions/node_modules/coc-explorer,~/.vim,~/.vim/pack/my-plugins/start/webapi-vim,~/.vim/pack/my-plugins/start/vista.vim,~/.vim/pack/my-plugins/start/vimux-jest-test,~/.vim/pack/my-plugins/start/vimux,~/.vim/pack/my-plugins/start/vimfiler.vim,~/.vim/pack/my-plugins/start/vim-yaml-formatter,~/.vim/pack/my-plugins/start/vim-yaml,~/.vim/pack/my-plugins/start/vim-wakatime,~/.vim/pack/my-plugins/start/vim-test,~/.vim/pack/my-plugins/start/vim-surround,~/.vim/pack/my-plugins/start/vim-startify,~/.vim/pack/my-plugins/start/vim-snippets,~/.vim/pack/my-plugins/start/vim-ref,~/.vim/pack/my-plugins/start/vim-polyglot,~/.vim/pack/my-plugins/start/vim-notes,~/.vim/pack/my-plugins/start/vim-move,~/.vim/pack/my-plugins/start/vim-misc,~/.vim/pack/my-plugins/start/vim-markdown,~/.vim/pack/my-plugins/start/vim-livedown,~/.vim/pack/my-plugins/start/vim-jsx,~/.vim/pack/my-plugins/start/vim-js-indent,~/.vim/pack/my-plugins/start/vim-javascript,~/.vim/pack/my-plugins/start/vim-git,~/.vim/pack/my-plugins/start/vim-fugitive,~/.vim/pack/my-plugins/start/vim-dispatch,~/.vim/pack/my-plugins/start/vim-devicons,~/.vim/pack/my-plugins/start/vim-code-dark,~/.vim/pack/my-plugins/start/vim-bbye,~/.vim/pack/my-plugins/start/vim-auto-save,~/.vim/pack/my-plugins/start/unite.vim,~/.vim/pack/my-plugins/start/ultisnips,~/.vim/pack/my-plugins/start/tmuxline.vim,~/.vim/pack/my-plugins/start/fzf.vim,~/.vim/pack/my-plugins/start/editorconfig-vim,~/.vim/pack/my-plugins/start/coc.nvim,~/.vim/pack/my-plugins/start/ale,~/.vim/pack/my-plugins/start/ag.vim,~/.vim/pack/my-plugins/start/GoldenView,/usr/share/vim/vimfiles,/usr/share/vim/vim82,~/.vim/pack/my-plugins/start/vim-yaml/after,~/.vim/pack/my-plugins/start/vim-polyglot/after,~/.vim/pack/my-plugins/start/vim-jsx/after,~/.vim/pack/my-plugins/start/vim-javascript/after,~/.vim/pack/my-plugins/start/ultisnips/after,/usr/share/vim/vimfiles/after,~/.vim/after,/usr/lib/python3.7/dist-packages/powerline/bindings/vim
 set shiftwidth=2
 set shortmess=filnxtToOSacI
 set showmatch
@@ -552,12 +573,14 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 125 - ((97 * winheight(0) + 32) / 65)
+127
+normal! zo
+let s:l = 1 - ((0 * winheight(0) + 32) / 65)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-125
-normal! 01|
+1
+normal! 0
 tabnext 1
 badd +0 .git/config
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0

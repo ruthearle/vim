@@ -284,16 +284,16 @@ let g:auto_save = 0
 hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
 
 " multi cursor shortcuts "not sure if this is need now I have refactor/rename
-"nmap <silent> <C-d> <Plug>(coc-cursors-word)
-"xmap <silent> <C-d> <Plug>(coc-cursors-range)
+nmap <silent> <C-d> <Plug>(coc-cursors-word)
+xmap <silent> <C-d> <Plug>(coc-cursors-range)
 
-"nmap <expr> <silent> <C-d> <SID>select_current_word()
-"function! s:select_current_word()
-  "if !get(g:, 'coc_cursors_activated', 0)
-    "return "\<Plug>(coc-cursors-word)"
-  "endif
-  "return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
-"endfunc
+nmap <expr> <silent> <C-d> <SID>select_current_word()
+function! s:select_current_word()
+  if !get(g:, 'coc_cursors_activated', 0)
+    return "\<Plug>(coc-cursors-word)"
+  endif
+  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
+endfunc
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other
@@ -397,3 +397,6 @@ let g:fzf_colors =
 let g:webdevicons_enable = 1
 " adding the column to vimfiler
 let g:webdevicons_enable_vimfiler = 1
+
+"-------------- Ultisnips --------------------
+let g:UltiSnipsExpandTrigger = '<nop>'

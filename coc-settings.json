@@ -58,5 +58,8 @@
     "]c": "gitNext",
     "<<": "gitStage",
     ">>": "gitUnstage"
-  }
+  },
+  "explorer.openAction.strategy": "previousWindow",
+  "explorer.previewAction.onHover": true,
+  "explorer.quitOnOpen": true
 }
