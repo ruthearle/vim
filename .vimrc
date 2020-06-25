@@ -28,14 +28,16 @@ set list
 set clipboard=unnamedplus " use system clipboard
 set t_Co=256
 set background=dark
-set relativenumber
+"set relativenumber       " use #G to jump to line
 set number
 "set undofile
 set showtabline=-2
 set shortmess+=a
 "set cmdheight=3          " Helps to show full execusion of commands
 set ts=2                  " Tab stop width
-set path=.,,**            " Set the path for vim to search for files
+set path+=**            " Set the path for vim to search for files
+set wildmenu              " Display all matching files when we tab complete
+set wildignore+=**/node_modules/** " Ignore node_modules in wild menu
 "set nofoldenable          " Dont fold by default"
 set foldmethod=indent     " Lets you hide sections
 set laststatus=2          " Always show statusbar - Need for powerline to show
@@ -47,7 +49,8 @@ set expandtab
 set smarttab
 set expandtab
 set autowrite
-set lazyredraw
+set lazyredraw            " The screen will not be redraw while running macros and other commands - for speed (reddit)
+set nottyfast             " Improves smoothness of redraw with multiple lines - for speed (reddit)
 set nolist
 set listchars=eol:¬
 set hidden
@@ -310,8 +313,10 @@ function! s:check_back_space() abort
 endfunction
 let g:coc_snippet_next = '<tab>'
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <CR> to trigger completion. (default is <C-y>)
+"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
+                                           "\"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
