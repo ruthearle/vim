@@ -252,7 +252,6 @@ nnoremap <silent> <Plug>(coc-git-chunkinfo) :call coc#rpc#notify('doKeymap', [
 nnoremap <silent> <Plug>(coc-git-prevchunk) :call coc#rpc#notify('doKeymap', ['git-prevchunk'])
 nnoremap <silent> <Plug>(coc-git-nextchunk) :call coc#rpc#notify('doKeymap', ['git-nextchunk'])
 vnoremap <silent> <Plug>(coc-snippets-select) :call coc#rpc#notify('doKeymap', ['snippets-select'])
-nnoremap <SNR>98_: :=v:count ? v:count : ''
 snoremap <silent> <C-H> "_c
 nnoremap <silent> <Plug>(vimfiler_simple) :VimFilerSimple
 nnoremap <silent> <Plug>(vimfiler_create) :VimFilerCreate
@@ -290,11 +289,11 @@ nnoremap <Plug>(coc-float-jump) :call       coc#util#float_jump()
 nnoremap <Plug>(coc-float-hide) :call       coc#util#float_hide()
 nnoremap <Plug>(coc-fix-current) :call       CocActionAsync('doQuickfix')
 nnoremap <Plug>(coc-openlink) :call       CocActionAsync('openLink')
-nnoremap <Plug>(coc-references) :call       CocActionAsync('jumpReferences')
-nnoremap <Plug>(coc-type-definition) :call       CocActionAsync('jumpTypeDefinition')
-nnoremap <Plug>(coc-implementation) :call       CocActionAsync('jumpImplementation')
-nnoremap <Plug>(coc-declaration) :call       CocActionAsync('jumpDeclaration')
-nnoremap <Plug>(coc-definition) :call       CocActionAsync('jumpDefinition')
+nnoremap <Plug>(coc-references) :call       CocAction('jumpReferences')
+nnoremap <Plug>(coc-type-definition) :call       CocAction('jumpTypeDefinition')
+nnoremap <Plug>(coc-implementation) :call       CocAction('jumpImplementation')
+nnoremap <Plug>(coc-declaration) :call       CocAction('jumpDeclaration')
+nnoremap <Plug>(coc-definition) :call       CocAction('jumpDefinition')
 nnoremap <Plug>(coc-diagnostic-prev-error) :call       CocActionAsync('diagnosticPrevious', 'error')
 nnoremap <Plug>(coc-diagnostic-next-error) :call       CocActionAsync('diagnosticNext',     'error')
 nnoremap <Plug>(coc-diagnostic-prev) :call       CocActionAsync('diagnosticPrevious')
@@ -404,6 +403,7 @@ set autowrite
 set background=dark
 set backspace=indent,eol,start
 set backupdir=~/.cache/vim/backup//
+set clipboard=unnamedplus
 set directory=~/.cache/vim/swap//
 set expandtab
 set fileencodings=ucs-bom,utf-8,default,latin1
@@ -443,15 +443,13 @@ let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/Code/salestrip/api
+cd ~/.vim
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
 argglobal
 %argdel
-$argadd .git/COMMIT_EDITMSG
-edit .git/COMMIT_EDITMSG
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -461,11 +459,38 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
+enew
+nnoremap <buffer> <nowait> <silent>  :call startify#open_buffers()
+nnoremap <buffer> <nowait> <silent> 0 :call startify#open_buffers(21)
+nnoremap <buffer> <nowait> <silent> 11 :call startify#open_buffers(35)
+nnoremap <buffer> <nowait> <silent> 10 :call startify#open_buffers(34)
+nnoremap <buffer> <nowait> <silent> 1 :call startify#open_buffers(22)
+nnoremap <buffer> <nowait> <silent> 2 :call startify#open_buffers(23)
+nnoremap <buffer> <nowait> <silent> 3 :call startify#open_buffers(24)
+nnoremap <buffer> <nowait> <silent> 4 :call startify#open_buffers(25)
+nnoremap <buffer> <nowait> <silent> 5 :call startify#open_buffers(26)
+nnoremap <buffer> <nowait> <silent> 6 :call startify#open_buffers(27)
+nnoremap <buffer> <nowait> <silent> 7 :call startify#open_buffers(28)
+nnoremap <buffer> <nowait> <silent> 8 :call startify#open_buffers(29)
+nnoremap <buffer> <nowait> <silent> 9 :call startify#open_buffers(30)
+nnoremap <buffer> <nowait> <silent> B :call startify#set_batchmode('B')
+nnoremap <buffer> <expr> N 'j '[v:searchforward].'N'
+nnoremap <buffer> <nowait> <silent> S :call startify#set_batchmode('S')
+nnoremap <buffer> <nowait> <silent> T :call startify#set_batchmode('T')
+nnoremap <buffer> <nowait> <silent> V :call startify#set_batchmode('V')
+nnoremap <buffer> <nowait> <silent> b :call startify#set_mark('B')
+nnoremap <buffer> <nowait> <silent> e :call startify#open_buffers(17)
+nnoremap <buffer> <nowait> <silent> i :enew | startinsert
+nnoremap <buffer> <expr> n ' j'[v:searchforward].'n'
+nnoremap <buffer> <nowait> <silent> q :call startify#open_buffers(37)
+nnoremap <buffer> <nowait> <silent> s :call startify#set_mark('S')
+nnoremap <buffer> <nowait> <silent> t :call startify#set_mark('T')
+nnoremap <buffer> <nowait> <silent> v :call startify#set_mark('V')
 let s:cpo_save=&cpo
 set cpo&vim
-cmap <buffer> <nowait> <silent> <C-R><C-F> <Plug><cfile>
-cnoremap <buffer> <expr> <Plug><cfile> fugitive#MessageCfile()
-cmap <buffer> <nowait> <silent>  <Plug><cfile>
+nnoremap <buffer> <nowait> <silent> <MiddleMouse> :enew | execute 'normal! "'.(v:register=='"'?'*':v:register).'gp'
+nnoremap <buffer> <nowait> <silent> <2-LeftMouse> :call startify#open_buffers()
+nnoremap <buffer> <nowait> <silent> <Insert> :enew | startinsert
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -476,16 +501,16 @@ setlocal balloonexpr=
 setlocal nobinary
 setlocal nobreakindent
 setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
+setlocal bufhidden=wipe
+setlocal nobuflisted
 setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=:#
-setlocal commentstring=#\ %s
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -502,8 +527,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'gitcommit'
-setlocal filetype=gitcommit
+if &filetype != 'startify'
+setlocal filetype=startify
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -516,36 +541,36 @@ set foldmethod=indent
 setlocal foldmethod=indent
 setlocal foldminlines=1
 setlocal foldnestmax=20
-setlocal foldtext=fugitive#Foldtext()
+setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tln
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*\\|^\\s*[-*+]\\s\\+
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
-setlocal includeexpr=substitute(v:fname,'^[^/]\\+/','','')
+setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=git\ --git-dir='/home/rooty/Code/salestrip/api/.git'\ show
+setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
 setlocal makeencoding=
 setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
+setlocal matchpairs=
 setlocal nomodeline
-setlocal modifiable
+setlocal nomodifiable
 setlocal nrformats=bin,octal,hex
 set number
-setlocal number
+setlocal nonumber
 setlocal numberwidth=4
 setlocal omnifunc=syntaxcomplete#Complete
-setlocal path=~/Code/salestrip/api/.git,~/Code/salestrip/api,~/Code/salestrip/api/.git,~/Code/salestrip/api,~/Code/salestrip/api/.git,~/Code/salestrip/api,
+setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -559,9 +584,9 @@ setlocal shiftwidth=2
 setlocal noshortname
 setlocal showbreak=
 setlocal sidescrolloff=-1
-setlocal signcolumn=auto
+setlocal signcolumn=no
 setlocal nosmartindent
-setlocal softtabstop=2
+setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
@@ -570,17 +595,17 @@ setlocal statusline=%!py3eval('powerline.statusline(1)')
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'gitcommit'
-setlocal syntax=gitcommit
+if &syntax != 'startify'
+setlocal syntax=startify
 endif
-setlocal tabstop=8
+setlocal tabstop=2
 setlocal tagcase=
 setlocal tagfunc=
 setlocal tags=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
-setlocal textwidth=72
+setlocal textwidth=0
 setlocal thesaurus=
 setlocal noundofile
 setlocal undolevels=-123456
@@ -591,14 +616,7 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 27) / 55)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 0
 tabnext 1
-badd +0 .git/COMMIT_EDITMSG
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
