@@ -244,6 +244,7 @@ let g:javascript_conceal_undefined            = "¿"
 let g:jsx_ext_required = 1
 
 "-------------ALE-------------
+let g:ale_disable_lsp = 1
 "let g:ale_lint_on_insert_leave = 1
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '✖'
@@ -274,7 +275,7 @@ nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
 
 " make test commands execute using dispatch.vim
-let test#strategy = "vimux"
+let test#strategy = "vimterminal"
 
 "------------https://github.com/xolox/vim-notes-------------
 let g:notes_directories = ['~/Code/notes']
@@ -315,8 +316,8 @@ let g:coc_snippet_next = '<tab>'
 
 
 " Use <CR> to trigger completion. (default is <C-y>)
-"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
-                                           "\"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
+                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>

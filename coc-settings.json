@@ -1,6 +1,7 @@
 {
   "suggest.snippetIndicator": "►",
-  "explorer.icon.enableVimDevions": true,
+  "diagnostic.displayByAle": true,
+  "explorer.icon.enableVimDevicons": true,
   "explorer.icon.enableNerdfont": true,
   "explorer.keyMappings": {
     "k": "nodePrev",
