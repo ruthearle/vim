@@ -138,12 +138,12 @@ nnoremap mr <C-w><C-l>
 nnoremap ml <C-w><C-h>
 
 "------ Tame search function -----
-nnoremap / /\v
-vnoremap / /\v
-set ignorecase
-set smartcase
-set gdefault
-set showmatch
+"nnoremap / /\v
+"vnoremap / /\v
+"set ignorecase
+"set smartcase
+"set gdefault
+"set showmatch
 nnoremap <leader><space> :noh<cr>
 "nnoremap <tab> %
 "vnoremap <tab> %
@@ -205,21 +205,6 @@ nnoremap <Leader>q :Bdelete<CR>
 
 "--------------BufOnly------------
 nnoremap <Leader>q. :BufOnly<CR>
-
-
-"------------Vimfiler-------------
-"let g:vimfiler_as_default_explorer = 1
-"let g:vimfiler_tree_leaf_icon = ' '
-"let g:vimfiler_tree_opened_icon = '▾'
-"let g:vimfiler_tree_closed_icon = '▸'
-"let g:vimfiler_file_icon = '-'
-"let g:vimfiler_marked_file_icon = '*'
-"let g:vimfiler_quick_look_command = 'gloobus preview'
-"let g:vimfiler_options_winwidth = 1
-"let g:vimfiler_options_winheight = 1
-"let g:vimfiler_options_fnamewidth = 1
-
-"noremap <silent><leader>f :<C-u>VimFilerExplorer -split -simple -winwidth=35 -explorer -no-quit<CR>
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -284,6 +269,17 @@ let g:notes_directories = ['~/Code/notes']
 "----------- vim autosave ----------
 let g:auto_save = 0
 
+"--------------- Devicons --------------------
+" loading the plugin
+let g:webdevicons_enable = 1
+
+"-------------- Ultisnips --------------------
+let g:UltiSnipsExpandTrigger = '<nop>'
+
+"-------------- Vista -----------------------
+let g:vista_default_executive = 'ctags'
+nnoremap <space>t :Vista <cr>
+
 "------------------ CoC --------------------
 " Multiline cursor support
 hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
@@ -335,22 +331,17 @@ endfunction
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 " Remap for rename current word across files
 nmap <leader>ra :CocSearch -w <cr>
-
 " Remap for refactor current word
 nmap <leader>rf <Plug>(coc-refactor)
 
 " Using CocList
 " Show commands
 nnoremap <silent> <space>m  :<C-u>CocList commands<cr>
-" Manage extensions
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
@@ -358,63 +349,12 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" File explorer - beta but so promising. Much faster than vimfiler
+" File explorer - love it!
 nmap <leader>p :CocCommand explorer<CR>
-"----------------------- fzf ----------------------
-" For project wide search
-nnoremap <space><space> :Files <cr>
-" Git log
-nnoremap <space>tig :Commits <cr>
-" Git status
-nnoremap <space>gs :GFiles?<cr>
-" Search word in open buffers
-"nnoremap <space>b :Buffers <cr>
-" Search lines across loaded buffers
-nnoremap <space>l :Lines <cr>
-" Search lines in current buffer
-nnoremap <space>bl :BLines <cr>
-" Search word under cursor across project
-nnoremap <space>w :Ag <cr>
-
-" Preview window for results
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)
-" [[B]Commits] Customize the options used by 'git log':
-let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-
-" Customize fzf colors to match your color scheme
-" - fzf#wrap translates this to a set of `--color` options
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
- \ 'bg':      ['bg', 'Normal'],
- \ 'hl':      ['fg', 'Comment'],
- \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
- \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
- \ 'hl+':     ['fg', 'Statement'],
- \ 'info':    ['fg', 'PreProc'],
- \ 'border':  ['fg', 'Ignore'],
- \ 'prompt':  ['fg', 'Conditional'],
- \ 'pointer': ['fg', 'Exception'],
- \ 'marker':  ['fg', 'Keyword'],
- \ 'spinner': ['fg', 'Label'],
- \ 'header':  ['fg', 'Comment'] }
-
-"--------------- Devicons --------------------
-" loading the plugin
-let g:webdevicons_enable = 1
-" adding the column to vimfiler
-let g:webdevicons_enable_vimfiler = 1
-
-"-------------- Ultisnips --------------------
-let g:UltiSnipsExpandTrigger = '<nop>'
-
-"-------------- Vista -----------------------
-let g:vista_default_executive = 'ctags'
 
 "-------------- FZF Preview ----------------
-" Colour
-$FZF_PREVIEW_PREVIEW_BAT_THEME = 'Coldark-Dark'
-
+" Initialise vista tags
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 " Commands used for fzf preview.
 let g:fzf_preview_command = 'bat --color=always --plain {-1}'
 " jump to the buffers by default, when possible
@@ -426,18 +366,25 @@ let g:fzf_preview_use_dev_icons = 1
 nmap <leader>f [fzf-p]
 xmap <leader>f [fzf-p]
 
-nnoremap <silent> [fzf-p]p     :<C-u>CocCommand fzf-preview.FromResources project_mru git<CR>
-nnoremap <silent> [fzf-p]gs    :<C-u>CocCommand fzf-preview.GitStatus<CR>
-nnoremap <silent> [fzf-p]ga    :<C-u>CocCommand fzf-preview.GitActions<CR>
+nnoremap <silent> <space>p     :<C-u>CocCommand fzf-preview.FromResources project_mru git<CR>
+nnoremap <silent> <space>gs    :<C-u>CocCommand fzf-preview.GitStatus<CR>
+nnoremap <silent> <space>ga    :<C-u>CocCommand fzf-preview.GitActions<CR>
 nnoremap <silent> <space>b     :<C-u>CocCommand fzf-preview.Buffers<CR>
 nnoremap <silent> <space>B     :<C-u>CocCommand fzf-preview.AllBuffers<CR>
-nnoremap <silent> [fzf-p]o     :<C-u>CocCommand fzf-preview.FromResources buffer project_mru<CR>
+nnoremap <silent> <space>o     :<C-u>CocCommand fzf-preview.FromResources buffer project_mru<CR>
 nnoremap <silent> [fzf-p]<C-o> :<C-u>CocCommand fzf-preview.Jumps<CR>
-nnoremap <silent> [fzf-p]g;    :<C-u>CocCommand fzf-preview.Changes<CR>
-nnoremap <silent> [fzf-p]/     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'"<CR>
-nnoremap <silent> [fzf-p]*     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
-nnoremap          [fzf-p]gr    :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
-xnoremap          [fzf-p]gr    "sy:CocCommand   fzf-preview.ProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
-nnoremap <silent> [fzf-p]t     :<C-u>CocCommand fzf-preview.BufferTags<CR>
-nnoremap <silent> [fzf-p]q     :<C-u>CocCommand fzf-preview.QuickFix<CR>
-nnoremap <silent> [fzf-p]l     :<C-u>CocCommand fzf-preview.LocationList<CR>
+nnoremap <silent> <space>g     :<C-u>CocCommand fzf-preview.Changes<CR>
+nnoremap <silent> <space>/     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'"<CR>
+" Grep text undercursor Visual mode
+vnoremap <silent> <space>/ "sy:<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--query="<C-r>=substitute(@s, '\(^\\v\)\\|\\\(<\\|>\)', '', 'g')<CR>"<CR>
+nnoremap <silent> <space>*     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
+nnoremap          <space><space>    :<C-u>CocCommand fzf-preview.DirectoryFiles<Space>
+nnoremap          <space>gr    :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
+xnoremap          <space>gr    "sy:CocCommand   fzf-preview.ProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+" Command below takes too long, use Vista instead
+"nnoremap <silent> <space>t     :<C-u>CocCommand fzf-preview.VistaCtags<CR>
+nnoremap <silent> <space>tb     :<C-u>CocCommand fzf-preview.VistaBufferCtags<CR>
+nnoremap <silent> <space>q     :<C-u>CocCommand fzf-preview.QuickFix<CR>
+nnoremap <silent> <space>l     :<C-u>CocCommand fzf-preview.LocatonList<CR>
+nnoremap <silent> <space>cd     :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
+nnoremap <silent> <space>cr     :<C-u>CocCommand fzf-preview.CocReferences<CR>
