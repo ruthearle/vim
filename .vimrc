@@ -1,5 +1,3 @@
-""
-"                       __   _(_)_ __ ___  _ __ ___
 "                       \ \ / / | '_ ` _ \| '__/ __|
 "                        \ V /| | | | | | | | | (__
 "                       (_)_/ |_|_| |_| |_|_|  \___|
@@ -10,16 +8,14 @@ python3 powerline_setup()
 python3 del powerline_setup
 scriptencoding utf-8
 set encoding=UTF-8
-set rtp+=/usr/lib/python3.7/dist-packages/powerline/bindings/vim
+set rtp+=./.local/lib/python3.9/site-packages/powerline/bindings/vim
 set laststatus=2
 let g:powerline_pycmd="py3"
+let g:powerline_pyeval="py3eval"
+let g:powerline_debugging_pyeval=1
 
 filetype plugin indent on
 let mapleader = ","
-
-"----------vim config shortcuts--------
-nnoremap <leader>vrc :split ~/.vimrc<cr>
-nnoremap <leader>so :so %<cr>
 
 " ----------- VIM General config ---------
 syntax enable
@@ -62,7 +58,12 @@ set nomodeline            " Ensure the vulnerability is covered
 set modelines=0           " Just to be sure :o)
 set updatetime=300
 set shortmess+=c
+set viminfo='1000         " Increase size of file history (default is 100)(used for fzf preview
 hi Search cterm=italic ctermfg=black ctermbg=DarkMagenta
+
+"----------vim config shortcuts--------
+nnoremap <leader>vrc :split ~/.vimrc<cr>
+nnoremap <leader>so :so %<cr>
 
 "-------- Set colourscheme -----------
 colorscheme codedark
@@ -208,17 +209,17 @@ nnoremap <Leader>q. :BufOnly<CR>
 
 "------------Vimfiler-------------
 "let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '*'
-let g:vimfiler_quick_look_command = 'gloobus preview'
-let g:vimfiler_options_winwidth = 1
-let g:vimfiler_options_winheight = 1
-let g:vimfiler_options_fnamewidth = 1
+"let g:vimfiler_tree_leaf_icon = ' '
+"let g:vimfiler_tree_opened_icon = '▾'
+"let g:vimfiler_tree_closed_icon = '▸'
+"let g:vimfiler_file_icon = '-'
+"let g:vimfiler_marked_file_icon = '*'
+"let g:vimfiler_quick_look_command = 'gloobus preview'
+"let g:vimfiler_options_winwidth = 1
+"let g:vimfiler_options_winheight = 1
+"let g:vimfiler_options_fnamewidth = 1
 
-noremap <silent><leader>f :<C-u>VimFilerExplorer -split -simple -winwidth=35 -explorer -no-quit<CR>
+"noremap <silent><leader>f :<C-u>VimFilerExplorer -split -simple -winwidth=35 -explorer -no-quit<CR>
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -367,7 +368,7 @@ nnoremap <space>tig :Commits <cr>
 " Git status
 nnoremap <space>gs :GFiles?<cr>
 " Search word in open buffers
-nnoremap <space>b :Buffers <cr>
+"nnoremap <space>b :Buffers <cr>
 " Search lines across loaded buffers
 nnoremap <space>l :Lines <cr>
 " Search lines in current buffer
@@ -406,3 +407,37 @@ let g:webdevicons_enable_vimfiler = 1
 
 "-------------- Ultisnips --------------------
 let g:UltiSnipsExpandTrigger = '<nop>'
+
+"-------------- Vista -----------------------
+let g:vista_default_executive = 'ctags'
+
+"-------------- FZF Preview ----------------
+" Colour
+$FZF_PREVIEW_PREVIEW_BAT_THEME = 'Coldark-Dark'
+
+" Commands used for fzf preview.
+let g:fzf_preview_command = 'bat --color=always --plain {-1}'
+" jump to the buffers by default, when possible
+let g:fzf_preview_buffers_jump = 1
+" Use vim-devicons
+let g:fzf_preview_use_dev_icons = 1
+
+" Keybindings
+nmap <leader>f [fzf-p]
+xmap <leader>f [fzf-p]
+
+nnoremap <silent> [fzf-p]p     :<C-u>CocCommand fzf-preview.FromResources project_mru git<CR>
+nnoremap <silent> [fzf-p]gs    :<C-u>CocCommand fzf-preview.GitStatus<CR>
+nnoremap <silent> [fzf-p]ga    :<C-u>CocCommand fzf-preview.GitActions<CR>
+nnoremap <silent> <space>b     :<C-u>CocCommand fzf-preview.Buffers<CR>
+nnoremap <silent> <space>B     :<C-u>CocCommand fzf-preview.AllBuffers<CR>
+nnoremap <silent> [fzf-p]o     :<C-u>CocCommand fzf-preview.FromResources buffer project_mru<CR>
+nnoremap <silent> [fzf-p]<C-o> :<C-u>CocCommand fzf-preview.Jumps<CR>
+nnoremap <silent> [fzf-p]g;    :<C-u>CocCommand fzf-preview.Changes<CR>
+nnoremap <silent> [fzf-p]/     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'"<CR>
+nnoremap <silent> [fzf-p]*     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
+nnoremap          [fzf-p]gr    :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
+xnoremap          [fzf-p]gr    "sy:CocCommand   fzf-preview.ProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+nnoremap <silent> [fzf-p]t     :<C-u>CocCommand fzf-preview.BufferTags<CR>
+nnoremap <silent> [fzf-p]q     :<C-u>CocCommand fzf-preview.QuickFix<CR>
+nnoremap <silent> [fzf-p]l     :<C-u>CocCommand fzf-preview.LocationList<CR>

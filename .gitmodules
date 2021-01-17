@@ -31,9 +31,6 @@
 [submodule "pack/my-plugins/start/vim-dispatch"]
 	path = pack/my-plugins/start/vim-dispatch
 	url = git@github.com:tpope/vim-dispatch.git
-[submodule "pack/my-plugins/start/vimfiler.vim"]
-	path = pack/my-plugins/start/vimfiler.vim
-	url = git@github.com:Shougo/vimfiler.vim.git
 [submodule "pack/my-plugins/start/unite.vim"]
 	path = pack/my-plugins/start/unite.vim
 	url = git@github.com:Shougo/unite.vim.git

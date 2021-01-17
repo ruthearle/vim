@@ -3,7 +3,7 @@
   "diagnostic.displayByAle": true,
   "explorer.icon.enableVimDevicons": true,
   "explorer.icon.enableNerdfont": true,
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "k": "nodePrev",
     "j": "nodeNext",
 
@@ -61,6 +61,6 @@
     ">>": "gitUnstage"
   },
   "explorer.openAction.strategy": "previousWindow",
-  "explorer.previewAction.onHover": true,
+  "explorer.previewAction.onHover": "labeling",
   "explorer.quitOnOpen": true
 }
