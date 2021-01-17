@@ -100,9 +100,6 @@
 [submodule "pack/my-plugins/start/vista.vim"]
 	path = pack/my-plugins/start/vista.vim
 	url = https://github.com/liuchengxu/vista.vim.git
-[submodule "pack/my-plugins/start/fzf.vim"]
-	path = pack/my-plugins/start/fzf.vim
-	url = git@github.com:junegunn/fzf.vim.git
 [submodule "pack/my-plugins/start/coc.nvim"]
 	path = pack/my-plugins/start/coc.nvim
 	url = git@github.com:neoclide/coc.nvim.git
