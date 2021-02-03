@@ -27,7 +27,7 @@ set background=dark
 "set relativenumber       " use #G to jump to line
 set number
 "set undofile
-set showtabline=-2
+set showtabline=2
 set shortmess+=a
 "set cmdheight=3          " Helps to show full execusion of commands
 set ts=2                  " Tab stop width
@@ -60,6 +60,17 @@ set updatetime=300
 set shortmess+=c
 set viminfo='1000         " Increase size of file history (default is 100)(used for fzf preview
 hi Search cterm=italic ctermfg=black ctermbg=DarkMagenta
+
+" Trigger `autoread` when files changes on disk
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+        \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+
+" Notification after file change
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 "----------vim config shortcuts--------
 nnoremap <leader>vrc :split ~/.vimrc<cr>
@@ -115,19 +126,6 @@ imap <C-S-Left> <ESC>:tabp<CR>
 map [b :bnext<CR>
 map ]b :bprevious<CR>
 
-
-"----------CopyPasta in Tmux-----------
-"----------Not working-----------------
-" copy a whole line to the clipboard
-"noremap ty "+y
-"noremap tY "+Y
-" put the text from clipboard AFTER the cursor
-"noremap tp "+p
-" put the text from clipboard BEFORE the cursor
-"noremap tP "+P
-
-"--------- Buffer -------------
-
 "------  Quick esc ---------
 inoremap jj <ESC>
 
@@ -147,6 +145,22 @@ nnoremap ml <C-w><C-h>
 nnoremap <leader><space> :noh<cr>
 "nnoremap <tab> %
 "vnoremap <tab> %
+"------------ incsearch -----------------
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
 "------------- New lines without entering into insert mode --------
 nnoremap ou O<ESC>
@@ -278,23 +292,21 @@ let g:UltiSnipsExpandTrigger = '<nop>'
 
 "-------------- Vista -----------------------
 let g:vista_default_executive = 'ctags'
-nnoremap <space>t :Vista <cr>
+let g:vista_fzf_preview = ['right:50%']
+let g:vista_close_on_jump = 1
+nnoremap <space>t :Vista coc<cr>
+
+"-------------- vim.svelte ----------------
+let g:vim_svelte_plugin_load_full_syntax = 1
 
 "------------------ CoC --------------------
 " Multiline cursor support
-hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
+"hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
+"nmap <silent> <C-c> <Plug>(coc-cursors-position)
+nmap <silent> <C-m> <Plug>(coc-cursors-word)*
+xmap <silent> <C-m> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+"xmap <silent> <C-m> <Plug>(coc-cursors-range)
 
-" multi cursor shortcuts "not sure if this is need now I have refactor/rename
-nmap <silent> <C-d> <Plug>(coc-cursors-word)
-xmap <silent> <C-d> <Plug>(coc-cursors-range)
-
-nmap <expr> <silent> <C-d> <SID>select_current_word()
-function! s:select_current_word()
-  if !get(g:, 'coc_cursors_activated', 0)
-    return "\<Plug>(coc-cursors-word)"
-  endif
-  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
-endfunc
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other
@@ -379,6 +391,7 @@ nnoremap <silent> <space>/     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=
 vnoremap <silent> <space>/ "sy:<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--query="<C-r>=substitute(@s, '\(^\\v\)\\|\\\(<\\|>\)', '', 'g')<CR>"<CR>
 nnoremap <silent> <space>*     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
 nnoremap          <space><space>    :<C-u>CocCommand fzf-preview.DirectoryFiles<Space>
+xnoremap          <space><space>    "sy:CocCommand   fzf-preview.DirectoryFiles<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
 nnoremap          <space>gr    :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
 xnoremap          <space>gr    "sy:CocCommand   fzf-preview.ProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
 " Command below takes too long, use Vista instead

@@ -1,6 +1,11 @@
 {
   "suggest.snippetIndicator": "►",
   "diagnostic.displayByAle": true,
+  "explorer.buffer.root.template": "[icon & 1] OPEN EDITORS",
+  "explorer.datetime.format": "dd/MM/yy HH:mm:ss",
+  "explorer.file.autoReveal": false,
+  "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename growRight 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]",
+  "explorer.file.root.template": "[icon & 1] PROJECT ([root])",
   "explorer.icon.enableVimDevicons": true,
   "explorer.icon.enableNerdfont": true,
   "explorer.keyMappings.global": {
@@ -61,6 +66,7 @@
     ">>": "gitUnstage"
   },
   "explorer.openAction.strategy": "previousWindow",
-  "explorer.previewAction.onHover": "labeling",
-  "explorer.quitOnOpen": true
+  "explorer.previewAction.onHover": false,
+  "explorer.quitOnOpen": true,
+  "coc.preferences.jumpCommand": "drop"
 }
