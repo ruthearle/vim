@@ -129,3 +129,6 @@
 [submodule "pack/my-plugins/start/vim-go"]
 	path = pack/my-plugins/start/vim-go
 	url = git@github.com:fatih/vim-go.git
+[submodule "pack/my-plugins/start/vim-delve"]
+	path = pack/my-plugins/start/vim-delve
+	url = git@github.com:sebdah/vim-delve.git
