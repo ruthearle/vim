@@ -65,8 +65,15 @@
     "<<": "gitStage",
     ">>": "gitUnstage"
   },
-  "explorer.openAction.strategy": "previousWindow",
+  "explorer.openAction.strategy": "sourceWindow",
   "explorer.previewAction.onHover": false,
   "explorer.quitOnOpen": true,
-  "coc.preferences.jumpCommand": "drop"
+  "coc.preferences.jumpCommand": "drop",
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    }
+  }
 }

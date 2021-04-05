@@ -255,13 +255,18 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
+\   'go': ['gofmt'],
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
+let g:ale_linters = {'go': ['gometalinter', 'gofmt']}
 let g:ale_set_highlights=1
 highlight ALEError ctermfg=black ctermbg=DarkRed
 highlight ALEWarn ctermfg=black ctermbg=DarkYellow
 highlight ALEErrorSign ctermfg=black ctermbg=DarkRed
 highlight ALEWarningSign ctermfg=black ctermbg=DarkYellow
+nmap <silent> <leader>fj :ALENext<cr>
+nmap <silent> <leader>fk :ALEPrevious<cr>
+
 " Navigate linting errors
 nnoremap <space>l :lnext<CR>
 nnoremap <space>p :lnext<CR>
@@ -298,6 +303,12 @@ nnoremap <space>t :Vista coc<cr>
 
 "-------------- vim.svelte ----------------
 let g:vim_svelte_plugin_load_full_syntax = 1
+
+"------------- Go -------------------------
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
+let g:go_fmt_command = 'goimports'
 
 "------------------ CoC --------------------
 " Multiline cursor support

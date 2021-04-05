@@ -132,3 +132,6 @@
 [submodule "pack/my-plugins/start/vim-delve"]
 	path = pack/my-plugins/start/vim-delve
 	url = git@github.com:sebdah/vim-delve.git
+[submodule "pack/my-plugins/start/godoctor.vim"]
+	path = pack/my-plugins/start/godoctor.vim
+	url = git@github.com:godoctor/godoctor.vim.git

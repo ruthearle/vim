@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =9
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/rooty/.nvm'
+let g:netrw_dirhist_1='/home/rooty/go/src/github.com/heptio/velero/cmd/velero'
+let g:netrw_dirhist_0='/home/rooty/.vim/.git/modules'
 let g:netrw_dirhist_9='/usr/share/X11/xorg.conf.d'
 let g:netrw_dirhist_8='/usr/share/X11/xkb'
 let g:netrw_dirhist_7='/home/rooty/Code/test'
@@ -7,6 +10,3 @@ let g:netrw_dirhist_6='/home/rooty/Code/sandbox/sweeps/.git'
 let g:netrw_dirhist_5='/home/rooty/Code/sandbox/worker'
 let g:netrw_dirhist_4='/home/rooty/Code/sandbox/sweeps/.git'
 let g:netrw_dirhist_3='/home/rooty/.vim/.git/modules/pack/my-plugins/start/coc.nvim'
-let g:netrw_dirhist_2='/home/rooty/.vim/.git/modules/pack/my-plugins/start'
-let g:netrw_dirhist_1='/home/rooty/.vim/.git/modules/pack/my-plugins'
-let g:netrw_dirhist_0='/home/rooty/.vim/.git/modules/pack'
