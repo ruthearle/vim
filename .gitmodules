@@ -10,9 +10,6 @@
 [submodule "pack/my-plugins/start/ctrlp.vim"]
 	path = pack/my-plugins/start/ctrlp.vim
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
-[submodule "pack/my-plugins/start/ag.vim"]
-	path = pack/my-plugins/start/ag.vim
-	url = git@github.com:brookhong/ag.vim.git
 [submodule "pack/my-plugins/start/editorconfig-vim"]
 	path = pack/my-plugins/start/editorconfig-vim
 	url = git@github.com:editorconfig/editorconfig-vim.git
@@ -135,3 +132,6 @@
 [submodule "pack/my-plugins/start/godoctor.vim"]
 	path = pack/my-plugins/start/godoctor.vim
 	url = git@github.com:godoctor/godoctor.vim.git
+[submodule "pack/my-plugins/start/fzf.vim"]
+	path = pack/my-plugins/start/fzf.vim
+	url = git@github.com:junegunn/fzf.vim.git

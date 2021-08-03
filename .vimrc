@@ -8,7 +8,7 @@ python3 powerline_setup()
 python3 del powerline_setup
 scriptencoding utf-8
 set encoding=UTF-8
-set rtp+=./.local/lib/python3.9/site-packages/powerline/bindings/vim
+set rtp+=./Library/Python/3.9/lib/python3/site-packages/bindings/vim
 set laststatus=2
 let g:powerline_pycmd="py3"
 let g:powerline_pyeval="py3eval"
@@ -21,7 +21,7 @@ let mapleader = ","
 syntax enable
 set syntax=whitespace
 set list
-set clipboard=unnamedplus " use system clipboard
+"set clipboard=unnamedplus " use system clipboard
 set t_Co=256
 set background=dark
 "set relativenumber       " use #G to jump to line
@@ -60,6 +60,12 @@ set updatetime=300
 set shortmess+=c
 set viminfo='1000         " Increase size of file history (default is 100)(used for fzf preview
 hi Search cterm=italic ctermfg=black ctermbg=DarkMagenta
+
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 
 " Trigger `autoread` when files changes on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
